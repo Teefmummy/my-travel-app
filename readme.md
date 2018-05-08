@@ -8,6 +8,7 @@
 ####4. The traveller can click a button to indicate that vacation spot as as favorite. This information will be included in a Vacation Faves table.  The traveller can add or delete vacation spots to this table and populate a Fave Notes field.
 
 ####WireFrame
+![razzjazz_project3_wireframe](https://user-images.githubusercontent.com/36650186/39771096-029cca18-52bf-11e8-8de4-07ef63448a91.png)
 
 ####Landing Page
 #####Pics, login fields, and list of vac locs
