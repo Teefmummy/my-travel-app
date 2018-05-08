@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 import { Route } from 'react-router-dom';
+
+import Home from './components/Home.jsx';
 
 
 class App extends Component {
@@ -12,6 +12,8 @@ class App extends Component {
         <header className="App-header">
 
             <h1>Hello</h1>
+
+            <Route exact path="/" component={Home} data={"test"}/>
 
         </header>
 
