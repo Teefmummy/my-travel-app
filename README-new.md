@@ -29,15 +29,13 @@
 ##### Map Coordinates
 ##### Image_url
 
-#### User Information Table
+#### User Information Table:
 ##### User_ID
 ##### Name
 ##### Email
 ##### Hash Password
 
-#### Vacation Favorites Table
+#### Vacation Favorites Table:
 ##### User_ID
 ##### Vacation_ID
 ##### Fave_Notes
-
-
