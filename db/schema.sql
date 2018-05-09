@@ -1,24 +1,10 @@
-\tripping_db
+\c travel_db
 
+DROP TABLE IF EXISTS vacations CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS vacaytable CASCADE;
-DROP TABLE IF EXISTS favtable CASCADE;
+DROP TABLE IF EXISTS favorites CASCADE;
 
-CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY,
-  username VARCHAR(64) UNIQUE,
-  email VARCHAR(255) UNIQUE,
-  pw_digest VARCHAR(255)
-);
 
-CREATE TABLE vacaytable (
-  trip_id SERIAL PRIMARY KEY,
-  location VARCHAR(255),
-  map_coord DECIMAL(18,4),
-  image_url VARCHAR(255)
-);
-
-CREATE TABLE favtable (
-  traveler INT REFERENCES users(user_id),
-  vacation INT REFERENCES vacaytable(trip_id)
-);
+CREATE TABLE users(id SERIAL PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), hashpassword VARCHAR(255) );
+CREATE TABLE vacations(id SERIAL PRIMARY KEY, location VARCHAR(255), description TEXT, latitude DECIMAL(18,15), longitude DECIMAL(18,15), img_url TEXT);
+CREATE TABLE favorites(id SERIAL PRIMARY KEY, fave_notes VARCHAR(255), user_id INT REFERENCES users(id), vacations_id INT REFERENCES vacations(id) );

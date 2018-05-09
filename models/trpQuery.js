@@ -1,12 +1,14 @@
 const db = require('../config/connection');
 
 //this will render all users that favorited same location
-function travelersOneDestination() {
+function travelersOneDestination(location) {
   return db.any('
   SELECT username
-  FROM users JOIN favtable
-  WHERE favtable.traveler = favtable.vacation
-  ')
+  FROM users
+  JOIN favtable
+  ON users.user_id = favtable.traveler
+  WHERE favtable.location_name = $1
+  ', location)
 }
 
 //this should render favorite destination of current user
