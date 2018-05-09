@@ -1,4 +1,4 @@
-# travel-app-diane#Project 3  Team Razz Jazz
+#Project 3 - Team Razz Jazz
 ## Online Travel Concierge
 
 ### User Story
