@@ -20,7 +20,7 @@ VALUES
 
 
 -- create fave-notes table
-INSERT INTO fave_notes
+INSERT INTO favorites
   (fave_notes, user_id, vacations_id)
 VALUES
   ('Loved this place',1, 2);

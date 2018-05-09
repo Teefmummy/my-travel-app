@@ -8,6 +8,7 @@ import Sidebar from './components/partials/Sidebar.jsx';
 import Nav from './components/partials/Nav.jsx';
 import MapArea from './components/partials/MapArea.jsx';
 import LocationsList from './components/partials/LocationsList.jsx';
+import Login from './components/Login.jsx';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <h1>Hello</h1>
 
             <Route exact path="/" component={Home} data={"test"}/>
+            <Route exact path="/Login" component={Login} />
 
         </header>
 
