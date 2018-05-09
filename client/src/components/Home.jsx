@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Sidebar from './partials/Sidebar.jsx';
+import LocationsList from './partials/LocationsList.jsx';
+
+// *** Home renders when logged in, LocationsList is showing
 
 class Home extends Component {
   // constructor(props);
@@ -10,7 +14,14 @@ class Home extends Component {
 
   render() {
     return (
-      <h3> &laquo; Home &raquo; </h3>
+      <div>
+          <h3> &laquo; Home &raquo; </h3>
+
+          <Sidebar />
+
+          <LocationsList />
+
+    </div>
     )
   }
 }

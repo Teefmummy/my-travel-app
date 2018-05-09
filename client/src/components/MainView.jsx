@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sidebar from './partials/Sidebar.jsx';
 
 export default class MainView extends Component {
     // constructor(props) {
@@ -9,5 +10,15 @@ export default class MainView extends Component {
   // this.state = {
   //
   // }
+
+  render() {
+    return (
+        <div className="main-container">
+
+            <Sidebar />
+
+        </div>
+    )
+  }
 
 }

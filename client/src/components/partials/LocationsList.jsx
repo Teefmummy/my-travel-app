@@ -10,4 +10,13 @@ export default class LocationsList extends Component {
   //
   // }
 
+  render() {
+    return (
+
+        <div className="sidebar">
+            <h4>Locations List</h4>
+        </div>
+    )
+  }
+
 }
