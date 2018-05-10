@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from './partials/Sidebar.jsx';
+import MapArea from './partials/MapArea.jsx';
 
 export default class MainView extends Component {
     // constructor(props) {
@@ -14,11 +15,8 @@ export default class MainView extends Component {
   render() {
     return (
         <div className="main-container">
-
-          <h3>MainView</h3>
-
-            <Sidebar />
-
+            <div><Sidebar /></div>
+            <MapArea />
         </div>
     )
   }
