@@ -24,10 +24,12 @@ class Login extends Component {
     this.props.onSubmit(this.state)
   }
 
-
   render(){
+
+
      return(
      <div>
+         <h3>Online Travel Concierge (OTC) Login Page </h3>
         <form onSubmit="this.handleSubmit">
           <label htmlFor="name"> Name: </label>
           <input type="text" value={this.state.name} name="name" onChange={this.handleChange}></input>
@@ -37,7 +39,7 @@ class Login extends Component {
                   <br/> <label htmlFor="Password"> Password: </label>
           <input type="text" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
           <br/>
-          <button value="Submit">Submit</button>
+          <button value="Login">LOGIN</button>
         </form>
      </div>
   )}
