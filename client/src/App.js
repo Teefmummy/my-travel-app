@@ -13,11 +13,13 @@ import Register from './components/Register.jsx';
 
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">
         <Nav />
-                <Route exact path="/Login" component={Login} />
+                <Route exact path="/Login" component={Login}  />
                 <Route exact path="/Register" component={Register} />
                 <Route exact path="/Home" component={Home} data={"test"}/>
 
