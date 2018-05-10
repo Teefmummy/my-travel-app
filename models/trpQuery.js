@@ -23,7 +23,7 @@ function allFavDestinationforUser(user_id) {
 function creatingFavorites(location) {
   return db.one(`
     INSERT INTO favorites( fave_notes, user_id, vacations_id)
-    SET ( $/fave_notes/, $/user_id/, $/vacations_id/)
+    VALUE ( $/fave_notes/, $/user_id/, $/vacations_id/)
     RETURNING *
   `, location)
 }
@@ -50,6 +50,5 @@ function creatingUsers(user) {
    travelersOneDestination,
    allFavDestinationforUser,
    // deetsforPoi
-   creatingFavorites,
-   creatingUsers
+   creatingFavorites
  }
