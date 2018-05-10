@@ -4,6 +4,7 @@ class Login extends Component {
     constructor(props) {
       super(props);
 
+
     this.state = {
     name:'',
     email:'',
@@ -21,9 +22,9 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
-    console.log("test handleSubmit");
     e.preventDefault();
-    this.props.onSubmit(this.state)
+    console.log(this.state);
+    this.props.onSubmit(this.state);
   }
 
   render(){
