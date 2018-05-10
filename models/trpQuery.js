@@ -8,7 +8,7 @@ function travelersOneDestination(location) {
   JOIN favorites
   ON users.id = favorites.id
   WHERE favorites.vacations_id = $/favorites.vacations_id/
-  `,location)
+  `, location)
 }
 
 //this should render favorite destination of current user
@@ -40,9 +40,10 @@ function creatingFavorites(location) {
 function creatingUsers(user) {
   return db.one(`
     INSERT INTO users( name, email, hashpassword)
-    SET ( $/name/, $/email/, $/hashpassword/)
+    VALUES ( $/name/, $/email/, $/hashpassword/)
   `, user)
 }
+
 //I will also want to create the hard coded destination to render on REACT
 //inside divs the direct the user to that geolocation
  module.exports = {
