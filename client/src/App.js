@@ -18,11 +18,10 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-                <Route exact path="/Login" component={Login} />
-                <Route exact path="/Register" component={Register} />
-                <Route exact path="/Home" component={Home} data={"test"}/>
-                <Route exact path='/map' component={MapArea} />
-
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/Register" component={Register} />
+          <Route exact path="/Home" component={Home} data={"test"}/>
+          <Route exact path='/map' component={MapArea} />
     </div>
     );
   }

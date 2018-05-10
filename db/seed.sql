@@ -1,4 +1,4 @@
-
+\c travel_db
 -- create users table
 INSERT INTO users
   (name, email, hashpassword)
