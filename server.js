@@ -3,6 +3,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 
 const userRoute = require('./routes/userRoute');
+const vacationRoute = require('./routes/vacationRoute');
 
 const app = express();
 
@@ -18,7 +19,8 @@ if (process.env.NODE_ENV === 'production') {
     }
 
 
-app.use('/user', userRoute)
+app.use('/user', userRoute);
+app.use('/api/vacations/', vacationRoute);
 
 
 

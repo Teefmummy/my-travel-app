@@ -3,7 +3,7 @@ const db = require('../config/connection');
 function getLocationsList() {
     return queryP = db.any(`
       SELECT * FROM vacations
-      ` )
+      ` );
 }
 
 function getOneLocation(id) {
