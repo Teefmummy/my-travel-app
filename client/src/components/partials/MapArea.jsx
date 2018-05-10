@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import Sidebar from './Sidebar.jsx';
 
 const LoadingContainer = (props) => (
   <div>Loading container!</div>
 )
 
 
-export class MapContainer extends Component {
+class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,25 +25,31 @@ export class MapContainer extends Component {
       height: '100%'
     }
     return (
-      <Map
-        google={this.props.google}
-        style={style}
-        onReady={this.fetchPlaces}
-        initialCenter={{
-            lat: 40.854885,
-            lng: -88.081807
-          }}
-        zoom={8}>
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+      <div>
 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-        </InfoWindow>
+        <Sidebar />
 
-      </Map>
+        <Map
+          google={this.props.google}
+          style={style}
+          onReady={this.fetchPlaces}
+          initialCenter={{
+              lat: 27.6648274,
+              lng: -81.51575350000002
+            }}
+          zoom={118}>
+          <Marker onClick={this.onMarkerClick}
+                  name={'Current location'} />
+
+          <InfoWindow onClose={this.onInfoWindowClose}>
+              <div>
+                <h1>{this.state.selectedPlace.name}</h1>
+              </div>
+          </InfoWindow>
+
+        </Map>
+
+      </div>
     );
   }
 }
