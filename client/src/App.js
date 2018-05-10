@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch  } from 'react-router-dom';
+
 import Home from './components/Home.jsx';
 import MainView from './components/MainView.jsx';
 import Sidebar from './components/partials/Sidebar.jsx';
