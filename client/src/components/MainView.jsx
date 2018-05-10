@@ -15,8 +15,8 @@ export default class MainView extends Component {
   render() {
     return (
         <div className="main-container">
-            <div><Sidebar /></div>
-            <MapArea />
+            <Sidebar />
+            <div className="map-area"><MapArea /></div>
         </div>
     )
   }

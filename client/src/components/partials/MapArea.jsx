@@ -21,14 +21,11 @@ class MapContainer extends Component {
 
   render() {
     const style = {
-      width: '70%',
+      width: '100%',
       height: '100%'
     }
     return (
-      <div className='map-area'>
-
-        <Sidebar />
-
+      <div>
         <Map
           google={this.props.google}
           style={style}
