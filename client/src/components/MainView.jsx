@@ -15,6 +15,8 @@ export default class MainView extends Component {
     return (
         <div className="main-container">
 
+          <h3>MainView</h3>
+
             <Sidebar />
 
         </div>
