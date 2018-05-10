@@ -28,15 +28,15 @@ super(props);
       <div className="App">
         <Nav />
 
-        <Route
-          render={() => (<Login onSubmit={this.handleSubmit} />)}
-          exact path="/login"
-          />
+              <Route
+                render={() => (<Login onSubmit={this.handleSubmit} />)}
+                exact path="/login"
+                />
 
-        <Route exact path="/Register" component={Register} />
-        <Route exact path="/Home" component={Home} data={"test"}/>
-                <Route exact path='/map' component={MapArea} />
-                
+              <Route exact path="/Register" component={Register} />
+              <Route exact path="/Home" component={Home} data={"test"}/>
+              <Route exact path='/map' component={MapArea} />
+
     </div>
     );
   }
