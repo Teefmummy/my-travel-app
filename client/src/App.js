@@ -20,6 +20,7 @@ class App extends Component {
                 <Route exact path="/Login" component={Login} />
                 <Route exact path="/Register" component={Register} />
                 <Route exact path="/Home" component={Home} data={"test"}/>
+                <Route exact path='/map' component={MapArea} />
 
     </div>
     );
