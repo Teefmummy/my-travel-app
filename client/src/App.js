@@ -19,8 +19,18 @@ super(props);
   this.handleSubmit= this.handleSubmit.bind(this);
 }
 
-  handleSubmit(user){
-    console.log(user);
+createUser(user) {
+  fetch('/user', {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+        'content-type': 'application/json'
+      }
+  })
+}
+
+  handleSubmit(user) {
+    this.createUser(user);
   }
 
   render() {

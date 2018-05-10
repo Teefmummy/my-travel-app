@@ -25,6 +25,12 @@ class Login extends Component {
     e.preventDefault();
     console.log(this.state);
     this.props.onSubmit(this.state);
+
+    this.state = {
+      name:'',
+      email:'',
+      hashpassword:''
+      }
   }
 
   render(){
