@@ -1,4 +1,4 @@
-const userControl = require('../models/trpQuery');
+git const userControl = require('../models/trpQuery');
 
 function createUser(req, res, next) {
   return userControl.getOne(req.params.id)
