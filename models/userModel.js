@@ -8,11 +8,11 @@ function register(credentials) {
     .then(hash => {
       const newUser = {
         email: credentials.email,
-        pw_digest: hash
+        hashpassword: hash
       };
       return db.one(`
-        INSERT INTO users (email, pw_digest)
-        VALUES ($/email/, $/pw_digest/)
+        INSERT INTO users (email, hashpassword)
+        VALUES ($/email/, $/hashpassword/)
         RETURNING id, email
       `, newUser)
     });
@@ -29,12 +29,12 @@ function login(credentials) {
   return findByEmail(credentials.email)
     .then(user => (
       // compare the provided password with the password digest
-      bcrypt.compare(credentials.password, user.pw_digest)
+      bcrypt.compare(credentials.password, user.haspassword)
         // match is a boolean if hashing the provided password
         // matches the hashed password
         .then(match => {
           if (!match) throw new Error('Credentials do not match');
-          delete user.pw_digest;
+          delete user.hashpassword;
           return user;
         })
     ));
