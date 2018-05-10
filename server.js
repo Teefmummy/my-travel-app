@@ -2,8 +2,10 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+const userRoute = require('./routes/userRoute');
 
 const app = express();
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -16,10 +18,7 @@ if (process.env.NODE_ENV === 'production') {
     }
 
 
-app.get('/hey', (req, res) => {
-      console.log('hey');
-      res.json({'msg': 'hey there'})
-    })
+app.get('/hey', (userRoute))
 
 
 
