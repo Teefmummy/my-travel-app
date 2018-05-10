@@ -1,27 +1,16 @@
-const userControl = require('../models/trpQuery');
+const userControl = require('../models/userModels');
 
 function createUser(req, res, next) {
-  return userControl.getOne(req.params.id)
+  console.log('userController')
+  userControl.creatingUsers(req.body)
     .then(data => {
       res.locals.user = data;
-      console.log(user)
+      console.log(data)
       next();
     })
-    .catch(err)
-}
-
-function oneTrp( req, res, next) {
-  console.log('hey')
-  return userControl.getOne(req.params,id)
-    .then(data => {
-      console.log(data);
-      res.locals.user = data;
-      next();
-    })
-    .catch(err)
+    .catch(next)
 }
 
 module.exports = {
-  createUser,
-  oneTrp
+  createUser
 }

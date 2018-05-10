@@ -23,7 +23,7 @@ function allFavDestinationforUser(user_id) {
 function creatingFavorites(location) {
   return db.one(`
     INSERT INTO favorites( fave_notes, user_id, vacations_id)
-    SET ( $/fave_notes/, $/user_id/, $/vacations_id/)
+    VALUE ( $/fave_notes/, $/user_id/, $/vacations_id/)
     RETURNING *
   `, location)
 }
@@ -37,18 +37,12 @@ function creatingFavorites(location) {
 // }
 
 // model below begins the users profile
-function creatingUsers(user) {
-  return db.one(`
-    INSERT INTO users( name, email, hashpassword)
-    SET ( $/name/, $/email/, $/hashpassword/)
-  `, user)
-}
+
 //I will also want to create the hard coded destination to render on REACT
 //inside divs the direct the user to that geolocation
  module.exports = {
    travelersOneDestination,
    allFavDestinationforUser,
    // deetsforPoi
-   creatingFavorites,
-   creatingUsers
+   creatingFavorites
  }
