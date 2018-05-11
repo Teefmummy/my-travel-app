@@ -81,7 +81,7 @@ checkToken() {
   }
 
   componentDidMount() {
-    this.fetchUser();
+    // this.fetchUser();
     this.checkToken();
   }
 
