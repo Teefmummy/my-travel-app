@@ -100,7 +100,8 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 }
 
 export default GoogleApiWrapper({
-  apiKey: (process.env.API_KEY),
+  apiKey: (process.env.REACT_APP_API_KEY),
+  // apiKey: ('AIzaSyDH3owHdfUOCFpYzjbepu7RZpEovaz0NV4'),
   LoadingContainer: LoadingContainer,
   libraries: ['places']
 })(MapContainer)
