@@ -9,9 +9,6 @@ import MapArea from './components/partials/MapArea.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 
-import dotenv from 'dotenv';
-dotenv.config();
-
 
 class App extends Component {
   constructor(props){
