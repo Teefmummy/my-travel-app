@@ -10,32 +10,49 @@ import Login from './Login.jsx';
 import Register from './Register.jsx';
 
 export default class MainView extends Component {
+  constructor(props){
+  super(props);
+    this.handleSubmit= this.handleSubmit.bind(this);
+  }
+
+  createUser(user) {
+    fetch('/user', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+          'content-type': 'application/json'
+        }
+    })
+  }
+
+    handleSubmit(user) {
+      this.createUser(user);
+    }
 
   render() {
     return (
       <div className="App">
-        <body class="HolyGrail">
+        <div className="HolyGrail">
           <header>
             <Nav />
           </header>
-          <div class="HolyGrail-body">
-            <main class="HolyGrail-content">
+          <div className="HolyGrail-body">
+            <main className="HolyGrail-content">
               <MapArea />
             </main>
-            <aside class="HolyGrail-nav">
+            <aside className="HolyGrail-nav">
               <Route
                 exact path='/destination'
                 component={LocationsList}
               />
               <Route
                 exact path='/login'
-                component={Login}
-                onSubmit={this.handleSubmit}
+                render={() => (<Login onSubmit={this.handleSubmit} />)}
               />
             </aside>
           </div>
           <footer>…</footer>
-        </body>
+        </div>
       </div>
     );
   }
