@@ -7,6 +7,9 @@ export default class LocationsList extends Component {
       locations: []
     }
   }
+  componentDidMount() {
+
+  }
   render() {
     return (
 
