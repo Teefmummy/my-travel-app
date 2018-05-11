@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import Sidebar from './Sidebar.jsx';
 
 const LoadingContainer = (props) => (
   <div>Loading container!</div>
@@ -27,8 +26,6 @@ class MapContainer extends Component {
     return (
       <div>
 
-        <Sidebar />
-
         <Map
           google={this.props.google}
           style={style}
@@ -37,7 +34,7 @@ class MapContainer extends Component {
               lat: 27.6648274,
               lng: -81.51575350000002
             }}
-          zoom={118}>
+          zoom={5}>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
 

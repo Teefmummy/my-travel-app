@@ -18,7 +18,6 @@ class Login extends Component {
     this.setState({
       [name]:e.target.value
     })
-      console.log("this.setState = " + this.state.name );
   }
 
   handleSubmit(e) {
