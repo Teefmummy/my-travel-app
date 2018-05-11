@@ -12,7 +12,7 @@ import Register from './Register.jsx';
 export default class MainView extends Component {
   constructor(props){
   super(props);
-    this.handleSubmit= this.handleSubmit.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   createUser(user) {
@@ -25,9 +25,12 @@ export default class MainView extends Component {
     })
   }
 
-    handleSubmit(user) {
-      this.createUser(user);
-    }
+
+
+  handleSubmit(user) {
+    this.createUser(user);
+  }
+
 
   render() {
     return (
@@ -43,7 +46,7 @@ export default class MainView extends Component {
             <aside className="HolyGrail-nav">
               <Route
                 exact path='/destination'
-                component={LocationsList}
+                component={() => (<LocationsList />)}
               />
               <Route
                 exact path='/user/register'
