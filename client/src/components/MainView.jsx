@@ -46,6 +46,10 @@ export default class MainView extends Component {
                 component={LocationsList}
               />
               <Route
+                exact path='/user/register'
+                render={() => (<Register onSubmit={this.handleSubmit} />)}
+              />
+              <Route
                 exact path='/user/login'
                 render={() => (<Login onSubmit={this.handleSubmit} />)}
               />
