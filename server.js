@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 const userRoute = require('./routes/userRoute');
 const vacationRoute = require('./routes/vacationRoute');
+require('dotenv').config();
 
 const app = express();
 
