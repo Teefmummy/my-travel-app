@@ -11,6 +11,10 @@
 
 .HolyGrail-content {
   flex: 1;
+  position: absolute;
+  right: 0;
+  width: 70%;
+  height: 100%;
 }
 
 .HolyGrail-nav, .HolyGrail-ads {
@@ -109,7 +113,7 @@ height: 50;
 .map-area {
   position: absolute;
   right: 0;
-  width: 70%;
+  width: 50%;
   height: 100%;
 }
 

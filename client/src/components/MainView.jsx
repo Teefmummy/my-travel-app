@@ -16,7 +16,7 @@ export default class MainView extends Component {
   }
 
   createUser(user) {
-    fetch('/user', {
+    fetch('/user/register', {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -46,7 +46,7 @@ export default class MainView extends Component {
                 component={LocationsList}
               />
               <Route
-                exact path='/login'
+                exact path='/user/login'
                 render={() => (<Login onSubmit={this.handleSubmit} />)}
               />
             </aside>

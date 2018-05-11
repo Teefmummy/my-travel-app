@@ -10,7 +10,7 @@ const Listing = ({ places }) => (
       <ul className="nearby-results">
         <h3>Nearby Places: </h3>
             {places && places.map(p =>
-            <div className="nearby-div">
+            <div className="nearby-div" key={p.id}>
                 <img className="nearby-icon" src={p.icon}></img>
                 <li key={p.id} className="nearby-result"> {p.name} </li>
               </div>
