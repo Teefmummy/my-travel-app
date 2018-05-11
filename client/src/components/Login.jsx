@@ -18,18 +18,16 @@ class Login extends Component {
     this.setState({
       [name]:e.target.value
     })
-      console.log("this.setState = " + this.state.name );
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
     this.props.onSubmit(this.state);
-
     this.setState({
       name:'',
       email:'',
-      hashpassword:''
+      hashpassword: ''
     })
   }
 

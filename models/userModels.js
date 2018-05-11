@@ -9,6 +9,13 @@ function creatingUsers(user) {
   `, user)
 }
 
+function destroyUser(user) {
+  return db.none(`
+    DELETE FROM user
+    WHERE name = $/name/
+  `)
+}
+
 
 module.exports = {
   creatingUsers

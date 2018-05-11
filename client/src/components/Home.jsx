@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Sidebar from './partials/Sidebar.jsx';
 import LocationsList from './partials/LocationsList.jsx';
 // const image = require('../assets/mapbkgrd1.jpeg');
 
@@ -23,7 +22,6 @@ class Home extends Component {
 
           <h3> &laquo; Home &raquo; </h3>
 
-          <Sidebar />
 
           <LocationsList />
 

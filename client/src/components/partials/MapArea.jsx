@@ -81,8 +81,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
               lat: 27.6648274,
               lng: -81.51575350000002
             }}
-          zoom={10}>
-
+          zoom={5}>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
 

@@ -12,11 +12,7 @@ export default class LocationsList extends Component {
   }
   render() {
     return (
-
-        <div className="sidebar">
-            <h4>Locations List</h4>
-
-        </div>
+      <h1>All Favorited Items Here..</h1>
     )
   }
 
