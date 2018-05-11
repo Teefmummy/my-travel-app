@@ -87,3 +87,29 @@ height: 50;
   width: 70%;
   height: 100%;
 }
+
+.listing-div {
+}
+
+.nearby-div {
+  /* background: rgba(0,0,0,0.2); */
+  bottom: 0;
+}
+
+.nearby-results {
+  background: rgba(255,255,255,0.5);
+  z-index: 1;
+  font-size: 15px;
+  list-style-type: none;
+  position: absolute;
+}
+
+.nearby-result {
+  display: inline;
+  padding: 0px 5px;
+  margin-top: 1px;
+}
+
+.nearby-icon {
+  width: 30px;
+}

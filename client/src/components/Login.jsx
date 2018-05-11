@@ -26,11 +26,11 @@ class Login extends Component {
     console.log(this.state);
     this.props.onSubmit(this.state);
 
-    this.state = {
+    this.setState({
       name:'',
       email:'',
       hashpassword:''
-      }
+    })
   }
 
   render(){

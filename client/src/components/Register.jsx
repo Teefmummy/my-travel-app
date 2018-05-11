@@ -5,10 +5,10 @@ class Register extends Component {
       super(props);
 
     this.state = {
-    name:'',
-    email:'',
-    password:''
-    }
+        name:'',
+        email:'',
+        password:''
+        }
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,7 +28,7 @@ class Register extends Component {
      return(
      <div>
          <h3>Online Travel Concierge (OTC) Registration Page </h3>
-        <form onSubmit="this.handleSubmit">
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="name"> Name: </label>
           <input type="text" value={this.state.name} name="name" onChange={this.handleChange}></input>
 

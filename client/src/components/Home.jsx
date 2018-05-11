@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Sidebar from './partials/Sidebar.jsx';
 import LocationsList from './partials/LocationsList.jsx';
-const image = require('../assets/mapbkgrd1.jpeg');
+// const image = require('../assets/mapbkgrd1.jpeg');
 
 // *** Home renders when logged in, LocationsList is showing
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MapArea from './MapArea.jsx';
 
 export default class Sidebar extends Component {
     constructor(props) {
