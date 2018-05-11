@@ -12,6 +12,11 @@ import Register from './Register.jsx';
 export default class MainView extends Component {
   constructor(props){
   super(props);
+
+    this.state = {
+      places: []
+    }
+
     this.handleSubmit= this.handleSubmit.bind(this);
   }
 
@@ -29,6 +34,8 @@ export default class MainView extends Component {
       this.createUser(user);
     }
 
+    handleFaveToggle
+
   render() {
     return (
       <div className="App">
@@ -38,7 +45,7 @@ export default class MainView extends Component {
           </header>
           <div className="HolyGrail-body">
             <main className="HolyGrail-content">
-              <MapArea />
+              <MapArea onPlaceToggle={this.handlePlaceToggle} />
             </main>
             <aside className="HolyGrail-nav">
               <Route

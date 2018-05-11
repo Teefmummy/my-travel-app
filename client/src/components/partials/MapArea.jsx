@@ -31,6 +31,7 @@ class MapContainer extends Component {
       // showingInfoWindow: false
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
 
 fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
@@ -54,6 +55,21 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    });
  };
 
+ getPlaceInfo(id) {
+   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${process.env.REACT_APP_API_KEY}`
+   fetch(url,
+     {mode: 'no-cors'})
+    .then(resp => {
+      console.log(url)
+      debugger;
+      console.log(resp);
+      return resp.json();
+    })
+    // .then(data => console.log(data))
+
+    .catch(err => console.log(err))
+ }
+
   onMarkerClick() {
     console.log('clicked');
     // this.setState({
@@ -61,6 +77,10 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
     //     selectedPlace: props,
     //     showingInfoWindow: true
     //     });
+      }
+
+      componentDidMount() {
+        this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
       }
 
   render() {
