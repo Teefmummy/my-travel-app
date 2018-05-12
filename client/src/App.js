@@ -20,7 +20,6 @@ super(props);
   email: ''
   };
 
-  this.handleSubmit = this.handleSubmit.bind(this);
   this.handleLogin = this.handleLogin.bind(this);
 }
 
@@ -28,9 +27,7 @@ super(props);
     this.loginRequest(credentials);
   }
 
-  handleSubmit(user) {
-    this.createUser(user);
-  }
+
 checkToken() {
     const authToken = localStorage.getItem('authToken');
     fetch('/auth', {
@@ -81,8 +78,7 @@ checkToken() {
   }
 
   componentDidMount() {
-    this.fetchUser();
-    this.checkToken();
+    // this.checkToken();
   }
 
   render() {

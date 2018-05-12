@@ -1,5 +1,6 @@
 const tokenService = require('../services/tokenService.js');
-const userModel = require('../models/userModels.js');
+const userModel = require('../models/userModel-bcrypt.js');
+const jwtDecode = require('jwt-decode');
 
 // - add token from the Authorization header to the request// - `receiveToken` - middleware takes the token from the `Authorization` header if present and puts it on the request
 function receiveToken(req, res, next) {
@@ -21,22 +22,28 @@ function restrict(req, res, next) {
       message: 'Invalid credentials'
     }))
 }
-
+function saveToken(respBody) {
+  localStorage.setItem('authToken', respBody.token);
+  const user = jwtDecode(respBody.token);
+  return user;
+}
 //  Create a new user and JWT for that user and send to client side.
-function register(req, res) {
+function register(req, res, next) {
+  console.log(req.body);
   userModel.register(req.body)
-    .catch(err => res.status(401).json({
-      message: 'Username taken'
-    }))
-    .then(data => tokenService.newToken({
+    .then((data) => tokenService.newToken({
+        name: data.name,
         email: data.email,
         id: data.id
     }))
     .then(token => {
+      console.log(token);
       res.json({
         token
       })
-    });
+    })
+    .then(saveToken)
+    .catch(next);
 }
 
 function login(req, res, next) {
