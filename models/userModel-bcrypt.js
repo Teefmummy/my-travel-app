@@ -31,7 +31,7 @@ function login(credentials) {
   return findByEmail(credentials.email)
     .then(user => (
       // compare the provided password with the password digest
-      bcrypt.compare(credentials.password, user.haspassword)
+      bcrypt.compare(credentials.hashpassword, user.hashpassword)
         // match is a boolean if hashing the provided password
         // matches the hashed password
         .then(match => {

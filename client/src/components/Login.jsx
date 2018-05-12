@@ -4,7 +4,6 @@ class Login extends Component {
     constructor(props) {
       super(props);
       this.state = {
-      name:'',
       email:'',
       hashpassword:''
       }
@@ -15,21 +14,19 @@ class Login extends Component {
   handleChange(e) {
     const {name, value} = e.target;
     this.setState({
-      [name]:value
+      [name]:e.target.value
     });
-    console.log(this.state);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
+    console.log(this.props.onSubmit);
     this.props.onSubmit(this.state);
     this.setState({
-      name:'',
       email:'',
       hashpassword: ''
     })
-    console.log(this.state);
   }
 
 
@@ -37,9 +34,6 @@ class Login extends Component {
      return(
      <div>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name"> Name: </label>
-          <input type="text" value={this.state.name} name="name" onChange={this.handleChange}></input>
-
           <br/> <label htmlFor="email"> Email: </label>
           <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
 

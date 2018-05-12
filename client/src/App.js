@@ -19,13 +19,13 @@ super(props);
   username: '',
   email: ''
   };
-
-  this.handleLogin = this.handleLogin.bind(this);
+  this.checkToken = this.checkToken.bind(this);
+  // this.handleLogin = this.handleLogin.bind(this);
 }
 
-  handleLogin(credentials) {
-    this.loginRequest(credentials);
-  }
+  // handleLogin(credentials) {
+  //   this.loginAttempt(credentials);
+  // }
 
 
 checkToken() {
@@ -55,30 +55,10 @@ checkToken() {
       })
   }
 
-  loginAttempt(credentials) {
-    console.log('User is trying to login with these credentials - ' + credentials);
-    fetch('/api/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(credentials),
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-      .then(resp => {
-        if (!resp.ok) throw new Error(resp.statusMessage);
-        return resp.json();
-      })
-      .then(respBody => {
-        console.log(respBody);
-        localStorage.setItem('authToken', respBody.token)
-        this.setState({
-          validUser: jwt.decodeToken(respBody.token).payload
-        })
-      })
-  }
+
 
   componentDidMount() {
-    // this.checkToken();
+    this.checkToken();
   }
 
   render() {
