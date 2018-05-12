@@ -14,10 +14,11 @@ export default class MainView extends Component {
   super(props);
 
     this.state = {
-      places: []
+      // places: []
     }
 
     this.handleSubmit= this.handleSubmit.bind(this);
+    this.handlePlacesToggle = this.handlePlacesToggle.bind(this);
   }
 
   createUser(user) {
@@ -34,7 +35,9 @@ export default class MainView extends Component {
       this.createUser(user);
     }
 
-    handleFaveToggle
+    handlePlacesToggle() {
+      console.log('show Places toggled');
+    }
 
   render() {
     return (
@@ -45,7 +48,7 @@ export default class MainView extends Component {
           </header>
           <div className="HolyGrail-body">
             <main className="HolyGrail-content">
-              <MapArea onPlaceToggle={this.handlePlaceToggle} />
+              <MapArea onPlacesToggle={this.handlePlacesToggle} />
             </main>
             <aside className="HolyGrail-nav">
               <Route
