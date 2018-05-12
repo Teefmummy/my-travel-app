@@ -17,6 +17,7 @@ class Login extends Component {
     this.setState({
       [name]:value
     });
+    console.log(this.state);
   }
 
   handleSubmit(e) {
@@ -28,7 +29,9 @@ class Login extends Component {
       email:'',
       hashpassword: ''
     })
+    console.log(this.state);
   }
+
 
   render(){
      return(

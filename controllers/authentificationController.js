@@ -1,5 +1,5 @@
 const tokenService = require('../services/tokenService.js');
-const userModel = require('../models/user.js');
+const userModel = require('../models/userModels.js');
 
 // - add token from the Authorization header to the request// - `receiveToken` - middleware takes the token from the `Authorization` header if present and puts it on the request
 function receiveToken(req, res, next) {
