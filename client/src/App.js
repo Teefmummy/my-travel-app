@@ -33,7 +33,7 @@ super(props);
   }
 checkToken() {
     const authToken = localStorage.getItem('authToken');
-    fetch('/api/auth', {
+    fetch('/auth', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -81,7 +81,7 @@ checkToken() {
   }
 
   componentDidMount() {
-    // this.fetchUser();
+    this.fetchUser();
     this.checkToken();
   }
 
