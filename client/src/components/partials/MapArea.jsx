@@ -36,7 +36,7 @@ class MapContainer extends Component {
     }
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
     this.handleAddPlace = this.handleAddPlace.bind(this);
-    // this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
     // this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
 
@@ -64,11 +64,12 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
 
  toggleShowPlaces() {
-   console.log('showPlaces: ', this.state.showingPlaces);
 
    this.setState(prevState => ({
      showingPlaces: !prevState.showingPlaces
    }));
+   // console.log('showingPlaces: ', this.state.showingPlaces);
+
  }
 
  handleAddPlace(e) {
@@ -98,14 +99,14 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
  //    .catch(err => console.log(err))
  // }
 
-  // onMarkerClick() {
-  //   console.log('clicked');
+  onMarkerClick() {
+    console.log('Marker clicked');
   //   this.setState({
   //       activeMarker: marker,
   //       selectedPlace: props,
   //       showingInfoWindow: true
   //       });
-  //     }
+      }
 
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
@@ -121,14 +122,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
     return (
       <div>
 
-        <div className="showplaces-toggle-window">
-          <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
-              Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
-        </div>
-        {this.state.showingPlaces === true ? (
-            <Listing places={this.state.places} onClick={this.handleAddPlace}/>
-          ) : this.state.showingPlaces}
-
         <Map
           google={this.props.google}
           style={style}
@@ -137,7 +130,8 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
               lat: 27.6648274,
               lng: -81.51575350000002
             }}
-          zoom={5}>
+          zoom={9}
+          mapTypeId='satellite'>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
 
@@ -148,6 +142,14 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
           </InfoWindow>
 
         </Map>
+
+        <div className="showplaces-toggle-window">
+          <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
+              Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
+        </div>
+        {this.state.showingPlaces === true ? (
+            <Listing places={this.state.places} onClick={this.handleAddPlace}/>
+          ) : this.state.showingPlaces}
 
       </div>
     )
