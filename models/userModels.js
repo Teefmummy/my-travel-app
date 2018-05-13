@@ -18,5 +18,6 @@ function destroyUser(user) {
 
 
 module.exports = {
-  creatingUsers
+  creatingUsers,
+  destroyUser
 }
