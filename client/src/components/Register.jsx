@@ -6,9 +6,9 @@ class Register extends Component {
 
 
     this.state = {
-    name:'',
-    email:'',
-    hashpassword:''
+      name:'',
+      email:'',
+      hashpassword:''
     }
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +35,7 @@ class Register extends Component {
      return(
      <div>
         <form onSubmit={this.handleSubmit}>
+          <h1>Register</h1>
           <label htmlFor="name"> Name: </label>
           <input type="text" value={this.state.name} name="name" onChange={this.handleChange}></input>
 

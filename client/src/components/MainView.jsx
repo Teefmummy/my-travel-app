@@ -8,15 +8,25 @@ import MapArea from './partials/MapArea.jsx';
 import LocationsList from './partials/LocationsList.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
+import jwt from 'jwt-js';
 
 export default class MainView extends Component {
   constructor(props){
   super(props);
-  this.handleSubmit = this.handleSubmit.bind(this);
+  this.state = {
+  // placesAdded: [],
+  username: '',
+  email: '',
+  validUser: null
+  };
+    this.handleSubmit= this.handleSubmit.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
+
   }
 
   createUser(user) {
-    fetch('/user/register', {
+    fetch('/auth/register', {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -24,13 +34,38 @@ export default class MainView extends Component {
         }
     })
   }
-
-
-
+   loginAttempt(credentials) {
+    console.log('User is trying to login with these credentials - ' + credentials);
+    fetch('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(resp => {
+      if (!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+    .then(respBody => {
+      console.log(respBody);
+      localStorage.setItem('authToken', respBody.token)
+      this.setState({
+        validUser: jwt.decodeToken(respBody.token).payload
+      })
+    })
+    .catch()
+  }
+  handleLogin(user) {
+    this.loginAttempt(user);
+  }
   handleSubmit(user) {
     this.createUser(user);
   }
 
+    handlePlaceToggle(place) { //update state.placesAdded, which goes to locationslist
+      console.log('Place toggled: ', place);
+    }
 
   render() {
     return (
@@ -41,11 +76,11 @@ export default class MainView extends Component {
           </header>
           <div className="HolyGrail-body">
             <main className="HolyGrail-content">
-              <MapArea />
+              <MapArea onPlaceToggle={this.handlePlaceToggle} />
             </main>
             <aside className="HolyGrail-nav">
               <Route
-                exact path='/destination'
+                exact path='/'
                 component={() => (<LocationsList />)}
               />
               <Route
@@ -54,7 +89,7 @@ export default class MainView extends Component {
               />
               <Route
                 exact path='/user/login'
-                render={() => (<Login onSubmit={this.handleSubmit} />)}
+                render={() => (<Login onSubmit={this.handleLogin} />)}
               />
             </aside>
           </div>

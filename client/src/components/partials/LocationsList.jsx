@@ -79,12 +79,12 @@ export default class LocationsList extends Component {
     this.fetchLocations();
   }
   render() {
-    console.log(this.state)
+    console.log(this.state.locations)
     return (
-        <div>
-          <h1>Hello User</h1>
+      <div>
+        <h1>Vacation Locations</h1>
           {this.renderLocations()}
-        </div>
+      </div>
     )
   }
 

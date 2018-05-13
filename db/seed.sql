@@ -1,4 +1,9 @@
 \c travel_db
+
+DELETE FROM favorites;
+DELETE FROM users;
+DELETE FROM vacations;
+
 -- create users table
 INSERT INTO users
   (name, email, hashpassword)

@@ -5,19 +5,22 @@ const LoadingContainer = (props) => (
   <div>Loading Map!</div>
 )
 
+//the rendered listing of nearby places
 const Listing = ({ places }) => (
     <div className="listing-div">
       <ul className="nearby-results">
-        <h3>Nearby Places: </h3>
-            {places && places.map(p =>
-            <div className="nearby-div" key={p.id}>
-                <img className="nearby-icon" src={p.icon}></img>
-                <li key={p.id} className="nearby-result"> {p.name} </li>
+        {/* <h3>Nearby Places List: </h3> */}
+            {places && places.map(place =>
+            <div className="nearby-div" key={place.id} >
+                <img className="nearby-icon" src={place.icon}></img>
+                <li key={place.id} className="nearby-result">
+                    <a href={`https://www.google.com/search?q=${place.name}+${place.vicinity}`} target="_blank" onClick={this.handleAddPlace}> {place.name} </a> </li>
               </div>
             )}
         </ul>
     </div>
-  );
+  )
+
 
 
 class MapContainer extends Component {
@@ -25,12 +28,16 @@ class MapContainer extends Component {
     super(props);
     this.state = {
       selectedPlace: {},
-      places: []
+      // places: [],
+      showingPlaces: false,
       // activeMarker: {},
       // selectedPlace: {},
-      // showingInfoWindow: false
+      showingInfoWindow: true
     }
+    this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
+    this.handleAddPlace = this.handleAddPlace.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
+    // this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
 
 fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
@@ -43,7 +50,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    // Specify location, radius and place types for your Places API search.
    const request = {
      location: center,
-     radius: '500',
+     radius: '1',
      type: ['food']
    };
 
@@ -54,13 +61,54 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    });
  };
 
+
+
+ toggleShowPlaces() {
+
+   this.setState(prevState => ({
+     showingPlaces: !prevState.showingPlaces
+   }));
+   // console.log('showingPlaces: ', this.state.showingPlaces);
+
+ }
+
+ handleAddPlace(e) {
+   console.log('adding place ', e.target)
+    this.props.onPlaceToggle(e.target.value)
+ }
+
+
+
+ // getPlaceInfo(id) {
+ //   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${process.env.REACT_APP_API_KEY}`;
+ //   fetch(url, {
+ //     mode: 'no-cors'
+ //        })
+ //    .then(resp => {
+ //      console.log(url)
+ //      // debugger;
+ //      // console.log(resp);
+ //      resp.json({resp})
+ //    })
+ //    .then(function(response) {
+ //      console.log(response);
+ //      return response;
+ //    })
+ //    // .then(data => console.log(data))
+ //    .catch(err => console.log(err))
+ // }
+
   onMarkerClick() {
-    console.log('clicked');
-    // this.setState({
-    //     activeMarker: marker,
-    //     selectedPlace: props,
-    //     showingInfoWindow: true
-    //     });
+    console.log('Marker clicked');
+  //   this.setState({
+  //       activeMarker: marker,
+  //       selectedPlace: props,
+  //       showingInfoWindow: true
+  //       });
+      }
+
+      componentDidMount() {
+        // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
       }
 
   render() {
@@ -71,8 +119,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
     return (
       <div>
 
-        <Listing places={this.state.places} />
-
         <Map
           google={this.props.google}
           style={style}
@@ -81,7 +127,8 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
               lat: 27.6648274,
               lng: -81.51575350000002
             }}
-          zoom={5}>
+          zoom={9}
+          mapTypeId='satellite'>
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
 
@@ -93,14 +140,21 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
         </Map>
 
+        <div className="showplaces-toggle-window">
+          <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
+              Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
+        </div>
+        {this.state.showingPlaces === true ? (
+            <Listing places={this.state.places} onClick={this.handleAddPlace}/>
+          ) : this.state.showingPlaces}
+
       </div>
-    );
-  }
-}
+    )
+  }}
+
 
 export default GoogleApiWrapper({
   apiKey: (process.env.REACT_APP_API_KEY),
-  // apiKey: ('AIzaSyDH3owHdfUOCFpYzjbepu7RZpEovaz0NV4'),
   LoadingContainer: LoadingContainer,
   libraries: ['places']
 })(MapContainer)
