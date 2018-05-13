@@ -30,13 +30,9 @@ export default class LocationsList extends Component {
     })
   }
 
-  checking() {
-    console.log(`clicked!`);
-    this.hoveredOn();
-  }
-
-  hoverOn(){
-    console.log('hovering on');
+  hoverOn(e){
+    const locationObj = e.target.id
+    console.log(this.state.locations[locationObj])
     this.setState({
       locationHover: true
     })
@@ -56,11 +52,15 @@ export default class LocationsList extends Component {
           <div
             className='destinationDivBox'
             key={locale.id}
+            id={locale.id}
             onMouseEnter={this.hoverOn}
             onMouseLeave={this.hoverOff}>
             <br></br>
             {locale.location}
-            {this.state.locationHover ? <button>testing</button> : <button>not good</button>}
+            <br></br>
+            <button>
+              View More
+            </button>
           </div>
         )
       })
