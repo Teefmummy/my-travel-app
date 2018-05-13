@@ -8,7 +8,8 @@ export default class LocationsList extends Component {
     this.state =  {
       locations: [],
       locationsLoaded: false,
-      locationHover: false
+      locationHover: false,
+      selectedLocation: {}
     }
     this.fetchLocations = this.fetchLocations.bind(this);
     this.renderLocations = this.renderLocations.bind(this);
@@ -32,15 +33,22 @@ export default class LocationsList extends Component {
 
   hoverOn(e){
     const locationObj = e.target.id
-    console.log(this.state.locations[locationObj])
     this.setState({
-      locationHover: true
+      locationHover: true,
+      selectedLocation: this.state.locations[locationObj]
     })
+    return (
+      <div>
+        <p>How you doing</p>
+      </div>
+    )
   }
-  hoverOff(){
-    console.log('off the hover');
+  hoverOff(e){
+    console.log(e.target)
+    // console.log('off the hover');
     this.setState({
-      locationHover: false
+      locationHover: false,
+      selectedLocation: {}
     })
   }
 
@@ -55,11 +63,10 @@ export default class LocationsList extends Component {
             id={locale.id}
             onMouseEnter={this.hoverOn}
             onMouseLeave={this.hoverOff}>
-            <br></br>
             {locale.location}
             <br></br>
             <button>
-              View More
+              Go here!
             </button>
           </div>
         )
@@ -72,6 +79,7 @@ export default class LocationsList extends Component {
     this.fetchLocations();
   }
   render() {
+    console.log(this.state)
     return (
         <div>
           <h1>Hello User</h1>
