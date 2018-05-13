@@ -107,7 +107,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
         <div className="showplaces-toggle-window">
           <button className={`showplaces-button ${this.state.showPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
-            &laquo; Nearby Places ({this.state.showPlaces === true ? 'Hide' : 'Show'}) &raquo; </button>
+              Nearby Places {this.state.showPlaces === true ? '(x)' : ' List'} </button>
         </div>
         {this.state.showPlaces === true ? (
             <Listing places={this.state.places}/>
