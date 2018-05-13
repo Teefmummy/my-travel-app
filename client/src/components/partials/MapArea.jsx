@@ -11,14 +11,16 @@ const Listing = ({ places }) => (
       <ul className="nearby-results">
         {/* <h3>Nearby Places List: </h3> */}
             {places && places.map(place =>
-            <div className="nearby-div" key={place.id}>
+            <div className="nearby-div" key={place.id} >
                 <img className="nearby-icon" src={place.icon}></img>
-                <li key={place.id} className="nearby-result"> {place.name} </li>
+                <li key={place.id} className="nearby-result">
+                    <a href={`https://www.google.com/search?q=${place.name}+${place.vicinity}`} target="_blank" onClick={this.handleAddPlace}> {place.name} </a> </li>
               </div>
             )}
         </ul>
     </div>
-  );
+  )
+
 
 
 class MapContainer extends Component {
@@ -26,14 +28,15 @@ class MapContainer extends Component {
     super(props);
     this.state = {
       selectedPlace: {},
-      places: [],
-      showPlaces: true
+      // places: [],
+      showingPlaces: false,
       // activeMarker: {},
       // selectedPlace: {},
-      // showingInfoWindow: false
+      showingInfoWindow: true
     }
-    this.onMarkerClick = this.onMarkerClick.bind(this);
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
+    this.handleAddPlace = this.handleAddPlace.bind(this);
+    // this.onMarkerClick = this.onMarkerClick.bind(this);
     // this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
 
@@ -47,7 +50,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    // Specify location, radius and place types for your Places API search.
    const request = {
      location: center,
-     radius: '500',
+     radius: '1',
      type: ['food']
    };
 
@@ -61,40 +64,53 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
 
  toggleShowPlaces() {
-   console.log('showPlaces: ', this.state.showPlaces);
+   console.log('showPlaces: ', this.state.showingPlaces);
 
    this.setState(prevState => ({
-     showPlaces: !prevState.showPlaces
+     showingPlaces: !prevState.showingPlaces
    }));
  }
 
+ handleAddPlace(e) {
+   console.log('adding place ', e.target)
+    this.props.onPlaceToggle(e.target.value)
+ }
+
+
 
  // getPlaceInfo(id) {
- //   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${process.env.REACT_APP_API_KEY}`
- //   fetch(url,
- //     {mode: 'no-cors'})
- //    .then(resp => {
+ //   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${process.env.REACT_APP_API_KEY}`;
+ //   fetch(url, {
+ //     method: 'GET',
+ //     mode: 'no-cors'
+ //        })
+ //    .then((resp) => {
  //      console.log(url)
- //      debugger;
- //      console.log(resp);
- //      return resp.json();
+ //      // debugger;
+ //      // console.log(resp);
+ //      return resp.json()
+ //    })
+ //    .then(function(response) {
+ //      console.log(response);
+ //      return response;
  //    })
  //    // .then(data => console.log(data))
- //
  //    .catch(err => console.log(err))
  // }
 
-  onMarkerClick() {
-    console.log('clicked');
-    // this.setState({
-    //     activeMarker: marker,
-    //     selectedPlace: props,
-    //     showingInfoWindow: true
-    //     });
-      }
+  // onMarkerClick() {
+  //   console.log('clicked');
+  //   this.setState({
+  //       activeMarker: marker,
+  //       selectedPlace: props,
+  //       showingInfoWindow: true
+  //       });
+  //     }
 
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
+
+
       }
 
   render() {
@@ -106,12 +122,12 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
       <div>
 
         <div className="showplaces-toggle-window">
-          <button className={`showplaces-button ${this.state.showPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
-              Nearby Places {this.state.showPlaces === true ? '(x)' : ' List'} </button>
+          <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
+              Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
         </div>
-        {this.state.showPlaces === true ? (
-            <Listing places={this.state.places}/>
-          ) : this.state.showPlaces}
+        {this.state.showingPlaces === true ? (
+            <Listing places={this.state.places} onClick={this.handleAddPlace}/>
+          ) : this.state.showingPlaces}
 
         <Map
           google={this.props.google}
