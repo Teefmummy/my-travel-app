@@ -1,9 +1,11 @@
 const db = require('../config/connection');
 
 function getLocationsList() {
-    return queryP = db.any(`
+  console.log('models');
+    return queryP = db.manyOrNone(`
       SELECT * FROM vacations
-      ` );
+      ORDER BY location ASC
+      `);
 }
 
 function getOneLocation(id) {

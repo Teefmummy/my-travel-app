@@ -1,7 +1,7 @@
 function sendOkResponse(req, res) {
   res.json({
     status: 'ok',
-    data: res.locals.user
+    data: res.locals.user || res.locals.vacation
   })
 }
 

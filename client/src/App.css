@@ -19,12 +19,16 @@
 
 .HolyGrail-nav, .HolyGrail-ads {
   /* 12em is the width of the columns */
-  flex: 0 0 12em;
+  flex: 0 0 25em;
+  border-radius: 20px;
+  margin-top: 0.2%;
 }
 
 .HolyGrail-nav {
   /* put the nav on the left */
   order: -1;
+  max-width: 1000px;
+  background: linear-gradient(to bottom right, lightblue, white);
 }
 
 .App {

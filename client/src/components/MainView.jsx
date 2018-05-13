@@ -52,8 +52,8 @@ export default class MainView extends Component {
             </main>
             <aside className="HolyGrail-nav">
               <Route
-                exact path='/destination'
-                component={LocationsList}
+                exact path='/'
+                component={() => (<LocationsList />)}
               />
               <Route
                 exact path='/user/register'

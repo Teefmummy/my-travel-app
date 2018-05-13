@@ -1,11 +1,11 @@
-const locationsList = require('../models/locationsListModel');
+const vacationDB = require('../models/locationsListModel');
 
-function getAllVacations(req, res, next, err) {
+function getAllVacations(req, res, next) {
   console.log('ListController')
-  locationsList.getLocationsList()
+  vacationDB.getLocationsList()
     .then(data => {
       res.locals.vacation = data;
-      console.log(data)
+      console.log('data', data)
       next();
     })
     .catch(next)
