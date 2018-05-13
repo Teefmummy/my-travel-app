@@ -34,7 +34,8 @@ class Login extends Component {
      return(
      <div>
         <form onSubmit={this.handleSubmit}>
-          <br/> <label htmlFor="email"> Email: </label>
+          <h1>Login</h1>
+          <label htmlFor="email"> Email: </label>
           <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
 
           <br/> <label htmlFor="password"> Password: </label>

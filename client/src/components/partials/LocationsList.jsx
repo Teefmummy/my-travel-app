@@ -29,7 +29,7 @@ export default class LocationsList extends Component {
         return (<p><a href="#"> {locale.location} </a></p>)
       })
     } else {
-      return (<h1>Loading</h1>)
+      return (<h4>* Loading *</h4>)
     }
   }
   componentDidMount() {
@@ -39,7 +39,7 @@ export default class LocationsList extends Component {
     return (
       <div>
         <h1>Vacation Locations</h1>
-      {this.renderLocations()}
+          {this.renderLocations()}
       </div>
     )
   }

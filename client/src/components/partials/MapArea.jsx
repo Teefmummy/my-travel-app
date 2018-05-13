@@ -89,7 +89,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
  //      console.log(url)
  //      // debugger;
  //      // console.log(resp);
- //      return resp.json()
+ //      resp.json({resp})
  //    })
  //    .then(function(response) {
  //      console.log(response);
