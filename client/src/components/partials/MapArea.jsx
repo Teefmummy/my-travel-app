@@ -82,10 +82,9 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
  // getPlaceInfo(id) {
  //   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${process.env.REACT_APP_API_KEY}`;
  //   fetch(url, {
- //     method: 'GET',
  //     mode: 'no-cors'
  //        })
- //    .then((resp) => {
+ //    .then(resp => {
  //      console.log(url)
  //      // debugger;
  //      // console.log(resp);
@@ -110,8 +109,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
-
-
       }
 
   render() {
