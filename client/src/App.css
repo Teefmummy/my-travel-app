@@ -142,3 +142,10 @@ height: 50;
 .nearby-icon {
   width: 30px;
 }
+
+.destinationDivBox {
+  border-top: .25px solid black;
+  border-bottom: .25px solid black;
+  margin: 1px;
+  padding: auto;
+}
