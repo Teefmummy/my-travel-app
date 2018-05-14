@@ -56,16 +56,7 @@ export default class LocationsList extends Component {
   renderLocations() {
     // console.log(this.state.selectedLocation)
 
-  //   return this.state.locations.map((locale) => {
-  //     return (
-  //       <div>
-  //     <img src={`/../../../db/images/${locale.img_url}`} className="location-img"></img>
-  //     <p><a href="#"> {locale.location} </a></p>
-  //   </div>
-  //     )
-  //   })
-  // } else {
-  //   return (<h4>* Loading *</h4>)
+
 
     if(this.state.locationsLoaded) {
       if(this.state.locationHover) {
