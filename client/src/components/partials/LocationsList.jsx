@@ -8,7 +8,7 @@ export default class LocationsList extends Component {
     super(props);
     this.state = {
       locations: [],
-      locationsLoaded: false,
+      locationsLoaded: false
     }
     this.fetchLocations = this.fetchLocations.bind(this);
     this.renderLocations = this.renderLocations.bind(this);
@@ -55,7 +55,10 @@ export default class LocationsList extends Component {
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (
-          <Detail info={locale}  updateLocation={this.props.updateLocation}/>
+          <Detail info={locale}
+            updateLocation={this.props.updateLocation}
+            activeid={this.props.activeid}
+          />
         )
         }))
       } else {
@@ -68,7 +71,7 @@ export default class LocationsList extends Component {
     this.fetchLocations();
   }
   render() {
-    console.log(this.state.currentSelection)
+    // console.log(this.state.currentSelection)
     // console.log(this.state)
     return (
       <div>

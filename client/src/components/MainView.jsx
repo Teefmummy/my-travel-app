@@ -20,13 +20,13 @@ export default class MainView extends Component {
   email: '',
   validUser: null,
   latitude: 27.6648274,
-  longitude: -81.51575350000002
+  longitude: -81.51575350000002,
+  activeid: null
   };
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
 
-    this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
   }
@@ -77,47 +77,63 @@ export default class MainView extends Component {
     }
 
     handleLocationChange(locationobj) {
+      console.log('handlelocationchange: ', this.state.activeid)
+
       this.setState({
             latitude: locationobj.latitude,
-            longitude: locationobj.longitude
+            longitude: locationobj.longitude,
+            activeid: locationobj.id
       })
     }
 
 
-    onButtonClick() { // ** TEST debug button
-      this.setState({
-            latitude: 13.193887000000000,
-            longitude: -59.543197999999960
-      })
-    }
+    // onButtonClick() { // ** TEST debug button
+    //   this.setState({
+    //         latitude: 13.193887000000000,
+    //         longitude: -59.543197999999960
+    //   })
+    // }
 
   render() {
     return (
 
       <div className="App">
 
-        <button onClick={this.onButtonClick}>RE-RENDER TEST BUTTON</button>
+        {/* <button onClick={this.onButtonClick}>RE-RENDER TEST BUTTON</button> */}
 
         <div className="HolyGrail">
           <header>
-            <Nav />
+              <Nav />
           </header>
           <div className="HolyGrail-body">
             <main className="HolyGrail-content">
-              <MapArea onPlaceToggle={this.handlePlaceToggle} latitude={this.state.latitude} longitude={this.state.longitude}/>
+              <MapArea
+                onPlaceToggle={this.handlePlaceToggle}
+                latitude={this.state.latitude}
+                longitude={this.state.longitude}
+              />
             </main>
             <aside className="HolyGrail-nav">
               <Route
                 exact path='/'
-                component={() => (<LocationsList updateLocation={this.handleLocationChange}/>)}
+                component={() => (
+                  <LocationsList
+                      updateLocation={this.handleLocationChange}
+                      activeid={this.state.activeid}
+                    />)}
               />
               <Route
                 exact path='/user/register'
-                render={() => (<Register onSubmit={this.handleSubmit} />)}
-              />
+                render={() => (
+                  <Register
+                    onSubmit={this.handleSubmit} />)}
+                  />
               <Route
                 exact path='/user/login'
-                render={() => (<Login onSubmit={this.handleLogin} />)}
+                render={() => (
+                  <Login
+                    onSubmit={this.handleLogin}
+                  />)}
               />
             </aside>
           </div>
