@@ -80,7 +80,7 @@ export default class MainView extends Component {
     }
 
 
-    onButtonClick() { // ** debug button for testing
+    onButtonClick() { // ** TEST debug button
       this.setState({
             latitude: 13.193887000000000,
             longitude: -59.543197999999960
