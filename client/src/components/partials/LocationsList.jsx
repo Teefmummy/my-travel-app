@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Detail from './Detail';
 import '../../App.css';
 
 export default class LocationsList extends Component {
@@ -8,14 +9,9 @@ export default class LocationsList extends Component {
     this.state = {
       locations: [],
       locationsLoaded: false,
-      locationSelected: false,
-      currentSelection: {}
     }
     this.fetchLocations = this.fetchLocations.bind(this);
     this.renderLocations = this.renderLocations.bind(this);
-    this.clickedOn = this.clickedOn.bind(this);
-    this.hoverOff = this.hoverOff.bind(this);
-    this.DetailView = this.DetailView.bind(this);
   }
 
   fetchLocations() {
@@ -32,54 +28,34 @@ export default class LocationsList extends Component {
     })
   }
 
-  clickedOn(e){
-    console.log(e.target)
-    const locationObj = e.target.id
-    this.setState({
-      locationSelected: true,
-      currentSelection: [locationObj]
-    })
-  }
-  hoverOff(e){
+  onChange(str) {
+    alert(`this ${str} was selected`)
+    console.log(this.state.currentSelection);
     // console.log(e.target)
     // console.log('off the hover');
-    this.setState({
-      locationSelected: false,
-      currentSelection: {}
-    })
+    // this.setState({
+    //   locationSelected: false,
+    //   currentSelection: {}
+    // })
   }
 
-  DetailView() {
-    console.log('here')
-    return (<div>Hello</div>)
-  }
+  // clickedOn(e) {
+  //   console.log(e.target)
+  //   const locationObj = e.target.id
+  //   this.setState({
+  //     locationSelected: true,
+  //     currentSelection: locationObj
+  //   })
+  //   this.onChange(locationObj)
+  // }
+
 
   renderLocations() {
 
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
-        // console.log(this.state.currentSelection)
-        // if (this.state.selectedLocation) {
-        //   return (
-        //     console.log(this.state.currentSelection)
-        //   )
-        // }
         return (
-          <div
-            className='destinationDivBox'
-            key={locale.id}
-            id={locale.id}
-            onClick={this.clickedOn}>
-            {locale.location}
-            <br></br>
-            <textarea></textarea>
-            <br></br>
-            {/* <button onClick={this.props.updateLocation(locale)}> */}
-            <button>
-              Go here!
-            </button>
-            <br/>
-          </div>
+          <Detail info={locale}/>
         )
         }))
       } else {
