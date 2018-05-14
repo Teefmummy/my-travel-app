@@ -1,14 +1,11 @@
 const db = require('../config/connection');
 
 function getLocationsList() {
-  console.log('models');
+  // console.log('models');
     return queryP = db.manyOrNone(`
-      SELECT * FROM vacations
-<<<<<<< HEAD
-=======
-      ORDER BY location ASC
->>>>>>> ade10f50a9013c50cd50656b79ca7e9e4c258e74
-      `);
+      SELECT *
+      FROM vacations
+    `);
 }
 
 function getOneLocation(id) {

@@ -5,7 +5,7 @@ import '../../App.css';
 export default class LocationsList extends Component {
   constructor(props) {
     super(props);
-    this.state =  {
+    this.state = {
       locations: [],
       locationsLoaded: false,
       locationHover: false,
@@ -15,6 +15,7 @@ export default class LocationsList extends Component {
     this.renderLocations = this.renderLocations.bind(this);
     this.hoverOn = this.hoverOn.bind(this);
     this.hoverOff = this.hoverOff.bind(this);
+    this.DetailView = this.DetailView.bind(this);
   }
 
   fetchLocations() {
@@ -37,14 +38,9 @@ export default class LocationsList extends Component {
       locationHover: true,
       selectedLocation: this.state.locations[locationObj]
     })
-    return (
-      <div>
-        <p>How you doing</p>
-      </div>
-    )
   }
   hoverOff(e){
-    console.log(e.target)
+    // console.log(e.target)
     // console.log('off the hover');
     this.setState({
       locationHover: false,
@@ -52,26 +48,53 @@ export default class LocationsList extends Component {
     })
   }
 
+  DetailView() {
+    console.log('here')
+    return (<div>Hello</div>)
+  }
 
   renderLocations() {
+    // console.log(this.state.selectedLocation)
     if(this.state.locationsLoaded) {
-      return this.state.locations.map((locale) => {
-        return (
-          <div
-            className='destinationDivBox'
-            key={locale.id}
-            id={locale.id}
-            onMouseEnter={this.hoverOn}
-            onMouseLeave={this.hoverOff}>
-            {locale.location}
-            <br></br>
-            <button>
-              Go here!
-            </button>
-          </div>
-        )
-      })
-    } else {
+      if(this.state.locationHover) {
+        return (this.state.locations.map((locale) => {
+          return (
+            <div
+              className='destinationDivBox'
+              key={locale.id}
+              id={locale.id}
+              onMouseEnter={this.hoverOn}
+              onMouseLeave={this.hoverOff}>
+              {locale.location}
+              <br></br>
+              <textarea></textarea>
+              <br></br>
+              <button>
+                Go here!
+              </button>
+            </div>
+          )
+        }))
+      } else {
+        return (this.state.locations.map((locale) => {
+          return (
+            <div
+              className='destinationDivBox'
+              key={locale.id}
+              id={locale.id}
+              onMouseEnter={this.hoverOn}
+              onMouseLeave={this.hoverOff}>
+              {locale.location}
+              <br></br>
+              <br></br>
+              <button>
+                Go here!
+              </button>
+            </div>
+          )
+      }))
+    }
+  } else {
       return (<h1>Loading</h1>)
     }
   }
@@ -79,7 +102,7 @@ export default class LocationsList extends Component {
     this.fetchLocations();
   }
   render() {
-    console.log(this.state.locations)
+    // console.log(this.state)
     return (
       <div>
         <h1>Vacation Locations</h1>
