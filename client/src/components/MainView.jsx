@@ -78,7 +78,7 @@ export default class MainView extends Component {
 
     handleLocationChange(locationobj) {
       console.log('handlelocationchange: ', this.state.activeid)
-
+      console.log('locObj: ', locationobj)
       this.setState({
             latitude: locationobj.latitude,
             longitude: locationobj.longitude,
