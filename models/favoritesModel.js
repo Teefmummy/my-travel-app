@@ -1,17 +1,14 @@
 const db = require('../config/connection');
 
-function getAllFavorites() {
-    return queryP = db.any(`
+function getAllFavorites(user_id) {
+  console.log(user_id);
+    return db.manyOrNone(`
       SELECT * FROM favorites
-      ` )
-}
-
-function addToFavorites(fav) {
-  //need to see what type of obj the maps API returns
+      WHERE user_id = $1
+      `, user_id);
 }
 
 
 module.exports = {
-    getAllFavorites,
-    addToFavorites
+    getAllFavorites
   }

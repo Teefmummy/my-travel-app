@@ -7,6 +7,7 @@ import Nav from './partials/Nav.jsx';
 import MapArea from './partials/MapArea.jsx';
 import LocationsList from './partials/LocationsList.jsx';
 import Login from './Login.jsx';
+import Favorites from './Favorites.jsx';
 import Register from './Register.jsx';
 import jwt from 'jwt-js';
 import jwtDecode from 'jwt-decode';
@@ -147,6 +148,10 @@ export default class MainView extends Component {
               <Route
                 exact path='/user/login'
                 render={() => (<Login onSubmit={this.handleLogin} />)}
+              />
+              <Route
+                exact path='/favorites'
+                render={() => (<Favorites user={this.state.validUser}/>)}
               />
             </aside>
           </div>

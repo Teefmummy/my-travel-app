@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secret = process.env.TOKEN_SECRET || 'supersecuresecret';
 
+
 function newToken(payload) {
   return new Promise((resolve, reject) => {
     jwt.sign(
