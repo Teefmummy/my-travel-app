@@ -32,8 +32,11 @@ class MapContainer extends Component {
       showingPlaces: false,
       // activeMarker: {},
       // selectedPlace: {},
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      latitude: 27.6648274,
+      longitude: -81.51575350000002,
     }
+
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
     this.handleAddPlace = this.handleAddPlace.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -64,13 +67,11 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
 
 
  toggleShowPlaces() {
-
-   this.setState(prevState => ({
-     showingPlaces: !prevState.showingPlaces
-   }));
-   // console.log('showingPlaces: ', this.state.showingPlaces);
-
- }
+     this.setState(prevState => ({
+       showingPlaces: !prevState.showingPlaces
+     }));
+     // console.log('showingPlaces: ', this.state.showingPlaces);
+   }
 
  handleAddPlace(e) {
    console.log('adding place ', e.target)
@@ -107,8 +108,16 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
   //       });
       }
 
+    onButtonClick() { // ** debug button for testing
+      this.setState({
+            latitude: 13.193887000000000,
+            longitude: -59.543197999999960
+      })
+    }
+
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
+
       }
 
   render() {
@@ -119,26 +128,35 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
     return (
       <div>
 
-        <Map
-          google={this.props.google}
-          style={style}
-          onReady={this.fetchPlaces}
-          initialCenter={{
-              lat: 27.6648274,
-              lng: -81.51575350000002
+        {/* {debug testing button} */}
+        <button onClick={this.onButtonClick.bind(this)}>Debug</button>
+
+          <Map
+            google={this.props.google}
+            style={style}
+            onReady={this.fetchPlaces}
+            // initialCenter={{
+            //     lat: this.state.initlatitude,
+            //     lng: this.state.initlongitude
+            //   }}
+            center={{ //** will use props instead (no state)
+              lat: this.state.latitude,
+              lng: this.state.longitude
             }}
-          zoom={9}
-          mapTypeId='satellite'>
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} />
+            zoom={9}
+            mapTypeId='satellite'>
+            <Marker onClick={this.onMarkerClick}
+                    name={'Current location'} />
 
-          <InfoWindow onClose={this.onInfoWindowClose}>
-              <div>
-                <h1>{this.state.selectedPlace.name}</h1>
-              </div>
-          </InfoWindow>
+            <InfoWindow onClose={this.onInfoWindowClose}>
+                <div>
+                  <h1>{this.state.selectedPlace.name}</h1>
+                </div>
+            </InfoWindow>
 
-        </Map>
+          </Map>
+
+
 
         <div className="showplaces-toggle-window">
           <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>

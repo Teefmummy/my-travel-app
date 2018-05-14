@@ -56,8 +56,6 @@ export default class LocationsList extends Component {
   renderLocations() {
     // console.log(this.state.selectedLocation)
 
-
-
     if(this.state.locationsLoaded) {
       if(this.state.locationHover) {
         return (this.state.locations.map((locale) => {
