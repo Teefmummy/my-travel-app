@@ -40,8 +40,8 @@ class Login extends Component {
 
           <br/> <label htmlFor="password"> Password: </label>
           <input type="text" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
-          <br/>
-          <button value="Login">LOGIN</button>
+
+          <br/><button value="Login">LOGIN</button>
         </form>
      </div>
   )}
