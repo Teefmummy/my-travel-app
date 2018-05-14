@@ -9,6 +9,7 @@ import LocationsList from './partials/LocationsList.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
 import jwt from 'jwt-js';
+import jwtDecode from 'jwt-decode';
 
 export default class MainView extends Component {
   constructor(props){
@@ -29,7 +30,12 @@ export default class MainView extends Component {
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
   }
-
+  saveToken(respBody) {
+    console.log('savingToken', respBody);
+    localStorage.setItem('authToken', respBody.token);
+    const user = jwtDecode(respBody.token);
+    return user;
+  }
   createUser(user) {
     fetch('/auth/register', {
       method: 'POST',
@@ -38,9 +44,14 @@ export default class MainView extends Component {
           'content-type': 'application/json'
         }
     })
+    .then((resp) => {
+      if(!resp.ok) throw new Error(resp.statusMessage)
+        return resp.json();
+    })
+    .then(this.saveToken);
   }
-   loginAttempt(credentials) {
-    console.log('User is trying to login with these credentials - ' + credentials);
+  loginAttempt(credentials) {
+    console.log('User is trying to login with these credentials - ' + JSON.stringify(credentials));
     fetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
@@ -52,14 +63,7 @@ export default class MainView extends Component {
       if (!resp.ok) throw new Error(resp.statusMessage);
       return resp.json();
     })
-    .then(respBody => {
-      console.log(respBody);
-      localStorage.setItem('authToken', respBody.token)
-      this.setState({
-        validUser: jwt.decodeToken(respBody.token).payload
-      })
-    })
-    .catch()
+    .then(this.saveToken)
   }
   handleLogin(user) {
     this.loginAttempt(user);

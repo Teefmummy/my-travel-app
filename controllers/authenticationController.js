@@ -22,14 +22,9 @@ function restrict(req, res, next) {
       message: 'Invalid credentials'
     }))
 }
-function saveToken(respBody) {
-  localStorage.setItem('authToken', respBody.token);
-  const user = jwtDecode(respBody.token);
-  return user;
-}
+
 //  Create a new user and JWT for that user and send to client side.
 function register(req, res, next) {
-  console.log(req.body);
   userModel.register(req.body)
     .then((data) => tokenService.newToken({
         name: data.name,
@@ -38,21 +33,16 @@ function register(req, res, next) {
     }))
     .then(token => {
       console.log(token);
-      res.json({
+       res.json({
         token
       })
     })
-    .then(saveToken)
     .catch(next);
 }
 
 function login(req, res, next) {
   userModel.login(req.body)
-    .catch(err => res.status(401).json({
-      status: 'Error',
-      message: 'Invalid credentails'
-    }))
-    .then(data => tokenService.newToken({
+    .then((data) => tokenService.newToken({
       id: data.id,
       email: data.email
     }))
@@ -61,12 +51,12 @@ function login(req, res, next) {
         token
       })
     })
+    .catch(next);
 }
 
 module.exports = {
   receiveToken,
   register,
   restrict,
-  login,
-  saveToken
+  login
 }
