@@ -88,6 +88,7 @@ export default class LocationsList extends Component {
               {locale.location}
               <br></br>
               <br></br>
+              {/* <button onClick={this.props.updateLocation(locale)}> */}
               <button>
                 Go here!
               </button>
