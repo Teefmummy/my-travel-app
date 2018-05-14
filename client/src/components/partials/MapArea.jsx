@@ -105,13 +105,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
   //       showingInfoWindow: true
   //       });
       }
-
-    onButtonClick() { // ** debug button for testing
-      this.setState({
-            latitude: 13.193887000000000,
-            longitude: -59.543197999999960
-      })
-    }
+      
 
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
@@ -126,9 +120,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
     return (
       <div>
 
-        {/* {debug testing button} */}
-        <button onClick={this.onButtonClick.bind(this)}>Debug</button>
-
           <Map
             google={this.props.google}
             style={style}
@@ -137,7 +128,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
             //     lat: this.state.initlatitude,
             //     lng: this.state.initlongitude
             //   }}
-            center={{ //** will use props instead (no state)
+            center={{
               lat: this.props.latitude,
               lng: this.props.longitude
             }}

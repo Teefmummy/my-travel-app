@@ -23,6 +23,7 @@ export default class MainView extends Component {
   };
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
   }
@@ -69,9 +70,20 @@ export default class MainView extends Component {
       console.log('Place toggled: ', place);
     }
 
+    onButtonClick() { // ** debug button for testing
+      this.setState({
+            latitude: 13.193887000000000,
+            longitude: -59.543197999999960
+      })
+    }
+
   render() {
     return (
+
       <div className="App">
+
+        <button onClick={this.onButtonClick}>RE-RENDER TEST</button>
+
         <div className="HolyGrail">
           <header>
             <Nav />
