@@ -74,7 +74,8 @@ export default class LocationsList extends Component {
             <br></br>
             <textarea></textarea>
             <br></br>
-            <button onClick={this.props.updateLocation(locale)}>
+            {/* <button onClick={this.props.updateLocation(locale)}> */}
+            <button>
               Go here!
             </button>
             <br/>
