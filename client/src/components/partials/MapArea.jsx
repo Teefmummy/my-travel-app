@@ -36,7 +36,7 @@ class MapContainer extends Component {
     }
 
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
-    this.handleAddPlace = this.handleAddPlace.bind(this);
+    // this.handleAddPlace = this.handleAddPlace.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
     // this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
@@ -71,10 +71,10 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
      // console.log('showingPlaces: ', this.state.showingPlaces);
    }
 
- handleAddPlace(e) {
-   console.log('adding place ', e.target)
-    this.props.onPlaceToggle(e.target.value)
- }
+ // handleAddPlace(e) {
+ //   console.log('adding place ', e.target)
+ //    this.props.onPlaceToggle(e.target.value)
+ // }
 
 
 
@@ -105,10 +105,12 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
   //       showingInfoWindow: true
   //       });
       }
-      
+
 
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
+
+
 
       }
 
@@ -146,13 +148,13 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
           </Map>
 
 
-
+          {/* { ** RENDERED NEARBY PLACES LIST ** } */}
         <div className="showplaces-toggle-window">
           <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
               Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
         </div>
         {this.state.showingPlaces === true ? (
-            <Listing places={this.state.places} onClick={this.handleAddPlace}/>
+            <Listing places={this.state.places}/>
           ) : this.state.showingPlaces}
 
       </div>

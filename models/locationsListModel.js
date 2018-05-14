@@ -5,6 +5,7 @@ function getLocationsList() {
     return queryP = db.manyOrNone(`
       SELECT *
       FROM vacations
+      ORDER BY location ASC
     `);
 }
 
