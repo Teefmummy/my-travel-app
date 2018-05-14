@@ -32,9 +32,7 @@ class MapContainer extends Component {
       showingPlaces: false,
       // activeMarker: {},
       // selectedPlace: {},
-      showingInfoWindow: true,
-      latitude: 27.6648274,
-      longitude: -81.51575350000002,
+      showingInfoWindow: true
     }
 
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
@@ -140,8 +138,8 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
             //     lng: this.state.initlongitude
             //   }}
             center={{ //** will use props instead (no state)
-              lat: this.state.latitude,
-              lng: this.state.longitude
+              lat: this.props.latitude,
+              lng: this.props.longitude
             }}
             zoom={9}
             mapTypeId='satellite'>

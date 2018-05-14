@@ -17,7 +17,9 @@ export default class MainView extends Component {
   // placesAdded: [],
   username: '',
   email: '',
-  validUser: null
+  validUser: null,
+  latitude: 27.6648274,
+  longitude: -81.51575350000002
   };
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -76,7 +78,7 @@ export default class MainView extends Component {
           </header>
           <div className="HolyGrail-body">
             <main className="HolyGrail-content">
-              <MapArea onPlaceToggle={this.handlePlaceToggle} />
+              <MapArea onPlaceToggle={this.handlePlaceToggle} latitude={this.state.latitude} longitude={this.state.longitude}/>
             </main>
             <aside className="HolyGrail-nav">
               <Route
