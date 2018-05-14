@@ -19,6 +19,12 @@ vacationRouting.route('/favorites')
     responseController.sendFavorites,
     responseController.sendErrorResponse
     )
+  .post(
+    authenticationController.restrict,
+    favoritesController.addNewFavorite,
+    responseController.sendFavorites,
+    responseController.sendErrorResponse
+    )
 
 
 
