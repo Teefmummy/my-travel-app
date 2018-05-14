@@ -1,7 +1,9 @@
 const vacationRouting = require('express').Router();
 
 const vacationController = require('../controllers/locationsListController');
+const favoritesController = require('../controllers/favoritesController');
 const responseController = require('../controllers/responseController');
+const authenticationController = require('../controllers/authenticationController');
 
 vacationRouting.route('/')
   .get(
@@ -9,6 +11,15 @@ vacationRouting.route('/')
     responseController.sendOkResponse,
     responseController.sendErrorResponse
   )
+
+vacationRouting.route('/favorites')
+  .get(
+    authenticationController.restrict,
+    favoritesController.getFavorites,
+    responseController.sendFavorites,
+    responseController.sendErrorResponse
+    )
+
 
 
 module.exports = vacationRouting;

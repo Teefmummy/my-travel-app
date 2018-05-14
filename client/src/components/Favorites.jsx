@@ -1,30 +1,33 @@
-import React, {Component} from '.react';
-
-
-
-
-const user = ({verifiedUser}) => {
-  return(
-    <h2>Welcome back {verifiedUser.params.username}!</h2>
-    <h5>Select from your Favorites or explore our interactive map, powered by Google</h5>
-
-    )
-}
+import React, {Component} from 'react';
 
 class Favorites extends Component{
-render(){
+  constructor(props) {
+    super(props);
+    this.state = {
 
+    }
+  }
 
-  return(
-
-  )
-
+  fetchFavorites() {
+    const authToken = localStorage.getItem('authToken');
+    fetch('/api/vacations/favorites', {
+      'method': 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      }
+    })
+    .then(resp => {
+      resp.json();
+      console.log(resp);
+    })
+  }
+  componentDidMount() {
+    this.fetchFavorites();
+  }
+  render(){
+    return(<h1>yo</h1>)
+  }
 }
-
-
-
-
-}
-
 
 export default Favorites

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS favorites CASCADE;
 
 
 CREATE TABLE users
-(id SERIAL PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), hashpassword VARCHAR(255) );
+(id SERIAL PRIMARY KEY, name VARCHAR(255), email VARCHAR(255) UNIQUE, hashpassword VARCHAR(255) );
 CREATE TABLE vacations
 (id SERIAL PRIMARY KEY, location VARCHAR(255), description TEXT, latitude DECIMAL(18,15), longitude DECIMAL(18,15), img_url TEXT);
 CREATE TABLE favorites

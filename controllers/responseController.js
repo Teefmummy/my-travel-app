@@ -4,7 +4,12 @@ function sendOkResponse(req, res) {
     data: res.locals.user || res.locals.vacation
   })
 }
-
+function sendFavorites(req, res) {
+  res.json({
+    status: 'ok',
+    data: res.locals.favorites
+  })
+}
 function sendErrorResponse(err, req, res, next) {
   res.json({
     status: 'not ok',
@@ -14,5 +19,6 @@ function sendErrorResponse(err, req, res, next) {
 
 module.exports = {
   sendOkResponse,
-  sendErrorResponse
+  sendErrorResponse,
+  sendFavorites
 }

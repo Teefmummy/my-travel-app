@@ -7,6 +7,7 @@ import Nav from './partials/Nav.jsx';
 import MapArea from './partials/MapArea.jsx';
 import LocationsList from './partials/LocationsList.jsx';
 import Login from './Login.jsx';
+import Favorites from './Favorites.jsx';
 import Register from './Register.jsx';
 import jwt from 'jwt-js';
 import jwtDecode from 'jwt-decode';
@@ -15,7 +16,6 @@ export default class MainView extends Component {
   constructor(props){
   super(props);
   this.state = {
-  // placesAdded: [],
   username: '',
   email: '',
   validUser: null,
@@ -26,9 +26,38 @@ export default class MainView extends Component {
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
-
+    this.checkToken = this.checkToken.bind(this);
+    // this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
+  }
+  checkToken() {
+    const authToken = localStorage.getItem('authToken');
+    console.log(authToken);
+    fetch('/auth', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      }
+    })
+      .then(resp => {
+        if (!resp.ok) throw new Error(resp.message);
+        return resp.json()
+      })
+      .then(respBody => {
+        console.log(respBody);
+        this.setState({
+          validUser: respBody.data
+        })
+      })
+      .catch(err => {
+        console.log('not logged in');
+        localStorage.removeItem('authToken');
+        this.setState({
+          validUser: null
+        });
+      })
   }
   saveToken(respBody) {
     console.log('savingToken', respBody);
@@ -93,6 +122,9 @@ export default class MainView extends Component {
     //         longitude: -59.543197999999960
     //   })
     // }
+    componentDidMount() {
+      this.checkToken();
+    }
 
   render() {
     return (
@@ -134,6 +166,10 @@ export default class MainView extends Component {
                   <Login
                     onSubmit={this.handleLogin}
                   />)}
+              />
+              <Route
+                exact path='/favorites'
+                render={() => (<Favorites user={this.state.validUser}/>)}
               />
             </aside>
           </div>

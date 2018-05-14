@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 const userRoute = require('./routes/userRoute');
 const vacationRoute = require('./routes/vacationRoute');
 const authRoute = require('./routes/authenticateRoute');
-require('dotenv').config();
 const authenticationController = require('./controllers/authenticationController');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(authenticationController.receiveToken);
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
     }
