@@ -26,7 +26,7 @@ class Detail extends Component {
         <br></br>
         <br></br>
         <textarea />
-        <button>
+        <button onClick={this.props.updateLocation(this.props.info)}>
           Go here!
         </button>
       </div>) :

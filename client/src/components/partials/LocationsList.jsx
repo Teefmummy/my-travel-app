@@ -55,7 +55,7 @@ export default class LocationsList extends Component {
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (
-          <Detail info={locale}/>
+          <Detail info={locale}  updateLocation={this.props.updateLocation}/>
         )
         }))
       } else {
