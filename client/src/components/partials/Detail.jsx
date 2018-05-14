@@ -29,7 +29,7 @@ class Detail extends Component {
         <br></br>
         <br></br>
         { this.props.info.id === this.props.activeid &&
-        <textarea />
+        <textarea onClick={(e) => e.stopPropagation()}/>
         }
         <br/>
         <button onClick={() => console.log('addfav clicked')} className="add-fav" type="submit">
