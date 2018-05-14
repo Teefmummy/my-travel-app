@@ -26,7 +26,7 @@ export default class MainView extends Component {
 
   }
   saveToken(respBody) {
-    console.log('savingToken', respBody.token);
+    console.log('savingToken', respBody);
     localStorage.setItem('authToken', respBody.token);
     const user = jwtDecode(respBody.token);
     return user;
