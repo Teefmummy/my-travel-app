@@ -26,7 +26,12 @@ export default class LocationsList extends Component {
   renderLocations() {
     if(this.state.locationsLoaded) {
       return this.state.locations.map((locale) => {
-        return (<p><a href="#"> {locale.location} </a></p>)
+        return (
+          <div>
+        <img src={`/../../../db/images/${locale.img_url}`} className="location-img"></img>
+        <p><a href="#"> {locale.location} </a></p>
+      </div>
+        )
       })
     } else {
       return (<h4>* Loading *</h4>)
