@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
 class Register extends Component {
-    constructor(props) {
-      super(props);
-
-
+  constructor(props) {
+    super(props);
     this.state = {
       name:'',
       email:'',
       hashpassword:''
     }
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(e) {
     const name = e.target.name
     this.setState({
@@ -43,7 +42,7 @@ class Register extends Component {
           <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
 
           <br/> <label htmlFor="Password"> Password: </label>
-          <input type="text" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
+          <input type="password" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
           <br/>
           <button value="Register">Register</button>
         </form>

@@ -39,7 +39,7 @@ class Login extends Component {
           <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
 
           <br/> <label htmlFor="password"> Password: </label>
-          <input type="text" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
+          <input type="password" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
 
           <br/><button value="Login">LOGIN</button>
         </form>
