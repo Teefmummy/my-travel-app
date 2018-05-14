@@ -4,12 +4,12 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      locationSelected: false,
       isactive: (this.props.info.id === this.props.activeid ? true : false)
     }
     this.clickedOn = this.clickedOn.bind(this);
     this.updateTheLocation = this.updateTheLocation.bind(this);
   }
-
   clickedOn(e) {
     e.stopPropagation();
 
