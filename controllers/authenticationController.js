@@ -15,6 +15,7 @@ function restrict(req, res, next) {
   tokenService.verify(req.authToken)
     .then(data => {
       res.locals.user = data;
+      console.log(res.locals.user);
       next();
     })
     .catch(err => res.status(401).json({

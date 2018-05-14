@@ -15,7 +15,6 @@ export default class MainView extends Component {
   constructor(props){
   super(props);
   this.state = {
-  // placesAdded: [],
   username: '',
   email: '',
   validUser: null,
@@ -25,10 +24,37 @@ export default class MainView extends Component {
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
-
     this.onButtonClick = this.onButtonClick.bind(this);
-    // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
+    this.checkToken = this.checkToken.bind(this);
 
+  }
+  checkToken() {
+    const authToken = localStorage.getItem('authToken');
+    console.log(authToken);
+    fetch('/auth', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      }
+    })
+      .then(resp => {
+        if (!resp.ok) throw new Error(resp.message);
+        return resp.json()
+      })
+      .then(respBody => {
+        console.log(respBody);
+        this.setState({
+          validUser: respBody.data
+        })
+      })
+      .catch(err => {
+        console.log('not logged in');
+        localStorage.removeItem('authToken');
+        this.setState({
+          validUser: null
+        });
+      })
   }
   saveToken(respBody) {
     console.log('savingToken', respBody);
@@ -89,6 +115,9 @@ export default class MainView extends Component {
             latitude: 13.193887000000000,
             longitude: -59.543197999999960
       })
+    }
+    componentDidMount() {
+      this.checkToken();
     }
 
   render() {
