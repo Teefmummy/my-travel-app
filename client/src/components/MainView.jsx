@@ -23,6 +23,8 @@ export default class MainView extends Component {
   };
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+
     this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
@@ -70,6 +72,14 @@ export default class MainView extends Component {
       console.log('Place toggled: ', place);
     }
 
+    handleLocationChange(locationobj) {
+      this.setState({
+            latitude: locationobj.latitude,
+            longitude: locationobj.longitude
+      })
+    }
+
+
     onButtonClick() { // ** debug button for testing
       this.setState({
             latitude: 13.193887000000000,
@@ -82,7 +92,7 @@ export default class MainView extends Component {
 
       <div className="App">
 
-        <button onClick={this.onButtonClick}>RE-RENDER TEST</button>
+        <button onClick={this.onButtonClick}>RE-RENDER TEST BUTTON</button>
 
         <div className="HolyGrail">
           <header>
@@ -95,7 +105,7 @@ export default class MainView extends Component {
             <aside className="HolyGrail-nav">
               <Route
                 exact path='/'
-                component={() => (<LocationsList />)}
+                component={() => (<LocationsList updateLocation={this.handleLocationChange}/>)}
               />
               <Route
                 exact path='/user/register'
