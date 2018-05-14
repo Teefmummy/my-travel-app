@@ -27,6 +27,7 @@ export default class MainView extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.checkToken = this.checkToken.bind(this);
+    this.createFave = this.createFave.bind(this);
     // this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
@@ -119,19 +120,22 @@ export default class MainView extends Component {
       const authToken = localStorage.getItem('authToken');
       const object = {
         method: 'POST',
+        'body': JSON.stringify(obj),
         headers: {
           'content-type' : 'application/json',
           'Authorization' : `Bearer ${authToken}`
         }
       }
-      fetch('/api/favorites', object)
+      fetch('/api/vacations/favorites', object)
         .then(resp => {
           if (!resp.ok) throw new Error(resp.message);
           return resp.json()
         })
+        .then()
     }
 
     createFave(faveObj) {
+      console.log('faveObj', faveObj)
       this.createFavorite(faveObj)
     }
 

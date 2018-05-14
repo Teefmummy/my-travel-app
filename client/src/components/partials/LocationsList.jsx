@@ -51,13 +51,14 @@ export default class LocationsList extends Component {
 
 
   renderLocations() {
-
+    
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (
           <Detail info={locale}
             updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
+            create_fave={this.props.create_fave}
           />
         )
         }))
