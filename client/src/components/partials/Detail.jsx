@@ -27,7 +27,6 @@ class Detail extends Component {
       }
 
   handleSubmit(e) {
-debugger;
     e.preventDefault();
     const faveObj = {
       fave_notes: this.state.fave_notes,
