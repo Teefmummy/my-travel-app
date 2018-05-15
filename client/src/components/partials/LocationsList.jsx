@@ -51,7 +51,7 @@ export default class LocationsList extends Component {
 
 
   renderLocations() {
-    
+
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (
@@ -75,8 +75,8 @@ export default class LocationsList extends Component {
     // console.log(this.state.currentSelection)
     // console.log(this.state)
     return (
-      <div>
-        <h1> &laquo;   Vacation Locations   &raquo; </h1>
+      <div class="location-list">
+        <h1 class="title">Vacation Locations</h1>
           { this.renderLocations() }
       </div>
     )

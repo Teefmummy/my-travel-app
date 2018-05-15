@@ -195,9 +195,7 @@ export default class MainView extends Component {
 
   render() {
     return (
-
       <div className="App">
-
         <div className="HolyGrail">
           <header>
               <Nav />
@@ -210,7 +208,7 @@ export default class MainView extends Component {
                 longitude={this.state.longitude}
               />
             </main>
-            <aside className="HolyGrail-nav">
+            <aside className="HolyGrail-sidebar">
               <Route
                 exact path='/'
                 component={() => (
@@ -243,7 +241,6 @@ export default class MainView extends Component {
               />
             </aside>
           </div>
-          <footer>…</footer>
         </div>
       </div>
     );

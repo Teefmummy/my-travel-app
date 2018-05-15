@@ -25,6 +25,7 @@ super(props);
       <div className="App">
             <MainView />
       </div>
+
     );
   }
 }

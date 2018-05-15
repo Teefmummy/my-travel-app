@@ -10,24 +10,17 @@
 }
 
 .HolyGrail-content {
-  flex: 1;
   position: absolute;
   right: 0;
   width: 70%;
   height: 100%;
 }
 
-.HolyGrail-nav, .HolyGrail-ads {
-  /* 12em is the width of the columns */
-  flex: 0 0 25em;
-  border-radius: 20px;
-  /* margin-top: 0.05%; */
-}
-
-.HolyGrail-nav {
-  /* put the nav on the left */
-  order: -1;
-  max-width: 1000px;
+.HolyGrail-sidebar {
+  left: 0;
+  width: 30%;
+  max-height: 500px;
+  overflow: scroll;
   background: linear-gradient(to bottom right, lightblue, white);
 }
 
@@ -55,48 +48,37 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .App-Nav {
+  height: 50px;
   display:flex;
   flex-direction: row;
-  margin-top:0;
+  background-color: black;
 }
 
-.App-NavHome{
-flex:1;
-width: 100;
-height: 50;
+.App-nav-obj {
+  text-align: center;
+  padding: 0;
+  margin: auto;
+  font-size: 25px;
+  color: white;
+  width: 25%;
+}
+.App-nav-obj a {
+  text-decoration: none;
+  color: white;
+}
+.App-nav-obj a:hover {
+  color: yellow;
+}
+.location-list {
+  height: 100%;
+  text-overflow: scroll;
 }
 
-.App-NavVacations{
-flex:1;
-width: 100;
-height: 50;
-}
-.App-NavFavorites{
-flex:1;
-width: 100;
-height: 50;
-}
-.App-NavLogin{
-flex:1;
-width: 100;
-height: 50;
-}
-.App-NavRegister{
-flex:1;
-width: 100;
-height: 50;
+.location-list .title {
+  background-color: red;
 }
 
-.Home{
-   background-image: url(${image});
-   z-index: 50000;
-}
 .main-container {
   display: flex;
   flex-direction: row;
