@@ -25,24 +25,28 @@ class FaveDetail extends Component {
     // this.props.updateFaveNote(this.props.info)
   }
 
-  deleteFave(e) {     // send Delete to route
+  deleteFave(e) {
+    console.log(this.props.info);   // send Delete to route
     e.preventDefault();
-    console.log('deleting fave id: ', this.props.info.id)
-    // this.props.deleteFave(this.props.info)
+    const favObj = {
+      id: this.props.info.id
+    }
+    console.log('deleting fave id: ', this.props.info.favoritesid)
+    this.props.DELETE(favObj)
   }
 
   render() {
     return (
 
       <div
-        className={ this.props.info.id
+        className={ this.props.info.favoritesid
           ? 'destinationDivBox is-active' : 'destinationDivBox not-active' }
-        key={this.props.info.id}
-        id={this.props.info.id}
+        key={this.props.info.favoritesid}
+        id={this.props.info.favoritesid}
         onClick={this.updateTheLocation}>
         <br/>
       <h2>{this.props.info.location}</h2>
-      { this.props.info.id  && (
+      { this.props.info.favoritesid  && (
         <div>
         <h4>Notes</h4>
         <textarea name="fave-note"
@@ -51,14 +55,14 @@ class FaveDetail extends Component {
         </div>
       ) }
         <br/>
-      { this.props.info.id &&
+      { this.props.info.favoritesid &&
         <button onClick={this.updateFaveNote} className="add-fav" type="submit">
           Update Favorite
         </button>
         }
         <br/>
         <br/>
-        { this.props.info.id &&
+        { this.props.info.favoritesid &&
           <button onClick={this.deleteFave} className="add-fav" type="submit">
             Delete
           </button>

@@ -27,6 +27,7 @@ export default class Favorites extends Component{
         locations: respBody.data,
         locationsLoaded: true
       })
+      console.log(respBody.data);
     })
   }
 
