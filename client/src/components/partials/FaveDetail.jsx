@@ -5,8 +5,7 @@ class FaveDetail extends Component {
     super(props);
     this.state = {
       favorites: [],
-      favoritesLoaded: false,
-
+      favoritesLoaded: false
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
     this.updateFaveNote = this.updateFaveNote.bind(this);
@@ -28,11 +27,8 @@ class FaveDetail extends Component {
 
   deleteFave(e) {     // send Delete to route
     e.preventDefault();
-    const faveObj = {
-      id: this.props.info.id
-    }
     console.log('deleting fave id: ', this.props.info.id)
-    this.props.DELETE(faveObj)
+    // this.props.deleteFave(this.props.info)
   }
 
   render() {
@@ -49,7 +45,9 @@ class FaveDetail extends Component {
       { this.props.info.id  && (
         <div>
         <h4>Notes</h4>
-        <textarea name="fave-note" onClick={(e) => e.stopPropagation()}/>
+        <textarea name="fave-note"
+          value={this.props.info.fave_notes}
+          onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
