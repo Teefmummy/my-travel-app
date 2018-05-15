@@ -16,18 +16,17 @@ export default class MainView extends Component {
   constructor(props){
   super(props);
   this.state = {
-  username: '',
-  email: '',
-  validUser: null,
-  latitude: 27.6648274,
-  longitude: -81.51575350000002,
-  activeid: null
+      username: '',
+      email: '',
+      validUser: null,
+      latitude: 27.6648274,
+      longitude: -81.51575350000002,
+      activeid: null
   };
     this.handleSubmit= this.handleSubmit.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.checkToken = this.checkToken.bind(this);
-    // this.onButtonClick = this.onButtonClick.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
   }
@@ -135,12 +134,7 @@ export default class MainView extends Component {
       this.createFavorite(faveObj)
     }
 
-    // onButtonClick() { // ** TEST debug button
-    //   this.setState({
-    //         latitude: 13.193887000000000,
-    //         longitude: -59.543197999999960
-    //   })
-    // }
+
     componentDidMount() {
       this.checkToken();
     }
@@ -149,8 +143,6 @@ export default class MainView extends Component {
     return (
 
       <div className="App">
-
-        {/* <button onClick={this.onButtonClick}>RE-RENDER TEST BUTTON</button> */}
 
         <div className="HolyGrail">
           <header>
