@@ -32,8 +32,8 @@ function updateFavorite(fave) {
 
 function deleteFavorite(fave) {
   console.log('fave', fave)
-  return db.one(`
-    DELETE FROM favorites WHERE id = $/id/ AND user_id = $/user_id/
+  return db.none(`
+    DELETE FROM favorites WHERE id = $/favoritesid/ AND user_id = $/user_id/
     `, fave)
 }
 

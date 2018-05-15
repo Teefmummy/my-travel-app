@@ -35,8 +35,8 @@ class FaveDetail extends Component {
   deleteFave(e) {     // send Delete to route
     e.preventDefault();
     e.stopPropagation();
-    console.log('deleting fave id: ', this.props.info.id)
-    // this.props.deleteFave(this.props.info)
+    console.log('deleting fave id: ', this.props.info.favoritesid)
+    this.props.DELETE(this.props.info)
   }
 
   handleChange(e) {
