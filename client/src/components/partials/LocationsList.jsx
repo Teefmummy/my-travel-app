@@ -75,8 +75,8 @@ export default class LocationsList extends Component {
     // console.log(this.state)
     return (
       <div>
-        <h1>Vacation Locations</h1>
-          {this.renderLocations()}
+        <h1> &laquo;   Vacation Locations   &raquo; </h1>
+          { this.renderLocations() }
       </div>
     )
   }

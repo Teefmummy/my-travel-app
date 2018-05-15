@@ -24,7 +24,7 @@ VALUES
 ('Florida', 'Warm and inviting.',27.6648274,-81.51575350000002, './florida2.jpeg'),
 ('New York', 'This is truly the city that never sleeps!',40.7127753,-74.0059728,'./newyork1.jpeg'),
 ('California', 'Sun and fun every day!',36.778261,-119.41793239999998,'./california1.jpeg'),
-('Austrailia', 'The is the land of the down under with tons of fun and beauty.',-25.274398,133.77513599999997,'./austrailia-sydney.jpeg'),
+('Australia', 'The is the land of the down under with tons of fun and beauty.',-25.274398,133.77513599999997,'./austrailia-sydney.jpeg'),
 ('Mexico', 'Spicy food and music and life with plenty of sun.',23.634501,-102.55278399999997,'./mexico1.jpeg'),
 ('Barbados', 'Crystal clear waters and amazing island cuisine.',13.193887,-59.54319799999996, './barbados1.jpeg'),
 ('Italy', 'Beautiful views and excellent entertainment.',41.87194,12.567379999999957, './italy1.jpeg'),

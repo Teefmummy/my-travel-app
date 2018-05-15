@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import FaveDetail from './partials/FaveDetail.jsx';
 
-class Favorites extends Component{
+export default class Favorites extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -22,12 +23,35 @@ class Favorites extends Component{
       console.log(resp);
     })
   }
+
+  renderFavorites() {
+
+    if(this.state.locationsLoaded) {
+      return (this.state.locations.map((locale) => {
+        return (
+          <FaveDetail info={locale}
+            activeid={this.props.activeid}
+          />
+        )
+        }))
+      } else {
+      return (<h1>Loading</h1>)
+    }
+  }
+
+
   componentDidMount() {
     this.fetchFavorites();
   }
-  render(){
-    return(<h1>yo</h1>)
+  render() {
+    // console.log(this.state.currentSelection)
+    // console.log(this.state)
+    return (
+      <div>
+        <h1> &laquo;   My Favorites   &raquo; </h1>
+          { this.renderFavorites() }
+      </div>
+    )
   }
-}
 
-export default Favorites
+}

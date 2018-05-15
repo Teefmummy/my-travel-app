@@ -106,8 +106,8 @@ export default class MainView extends Component {
     }
 
     handleLocationChange(locationobj) {
-      console.log('handlelocationchange: ', this.state.activeid)
-      console.log('locObj: ', locationobj)
+      // console.log('handlelocationchange: ', this.state.activeid)
+      // console.log('locObj: ', locationobj)
       this.setState({
             latitude: locationobj.latitude,
             longitude: locationobj.longitude,
@@ -169,7 +169,11 @@ export default class MainView extends Component {
               />
               <Route
                 exact path='/favorites'
-                render={() => (<Favorites user={this.state.validUser}/>)}
+                render={() => (<Favorites
+                  user={this.state.validUser}
+                  // updateFaveNote={this.updateFaveNote}
+                  // deleteFave={this.deleteFave}
+                />)}
               />
             </aside>
           </div>

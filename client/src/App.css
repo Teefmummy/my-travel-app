@@ -176,3 +176,8 @@ height: 50;
   margin: 1px;
   padding: auto;
 }
+
+.is-active {
+  /* background: white; */
+  background: linear-gradient(to bottom left, white, #fcf8f2);
+}
