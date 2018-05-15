@@ -58,6 +58,7 @@ export default class LocationsList extends Component {
           <Detail info={locale}
             updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
+            create_fave={this.props.create_fave}
           />
         )
         }))

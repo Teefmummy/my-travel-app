@@ -8,6 +8,7 @@ class Detail extends Component {
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
@@ -26,6 +27,7 @@ class Detail extends Component {
       }
 
   handleSubmit(e) {
+debugger;
     e.preventDefault();
     this.props.create_fave(this.state.fave_notes)
       }

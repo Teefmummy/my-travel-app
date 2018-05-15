@@ -27,6 +27,7 @@ export default class MainView extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.checkToken = this.checkToken.bind(this);
+    this.createFave = this.createFave.bind(this);
     // this.handlePlaceToggle = this.handlePlaceToggle.bind(this);
 
   }
