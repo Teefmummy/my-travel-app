@@ -183,7 +183,7 @@ export default class MainView extends Component {
 
     editFave(faveObj) {
       console.log('faveObj', faveObj)
-      this.editFavorite(faveObj)
+      this.updateFavorite(faveObj)
     }
 
 
@@ -237,7 +237,7 @@ export default class MainView extends Component {
                 render={() => (<Favorites
                   user={this.state.validUser}
                   updateLocation={this.handleLocationChange}
-                  updateFavorite={this.updateFavorite}
+                  updateFavorite={this.editFave}
                   deleteFave={this.deleteFave}
                 />)}
               />

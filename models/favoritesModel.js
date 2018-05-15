@@ -14,7 +14,7 @@ function createFavorite(fave) {
   // if (!fave.user_id) fave.user_id = null;
   return db.one(`
     INSERT INTO favorites (fave_notes, vacations_id, user_id)
-    VALUES ($/fave_notes/, $/fave_notes_id/, $/user_id/)
+    VALUES ($/fave_notes/, $/location_id/, $/user_id/)
     RETURNING *
     `, fave);
 }

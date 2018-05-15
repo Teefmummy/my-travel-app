@@ -11,7 +11,6 @@ function getFavorites(req, res, next) {
     .catch(next)
 }
 function addNewFavorite(req, res, next) {
-
   req.body.user_id = res.locals.user.id;
   console.log(req.body);
   favoritesModel.createFavorite(req.body)

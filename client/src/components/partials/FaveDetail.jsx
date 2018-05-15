@@ -9,8 +9,9 @@ class FaveDetail extends Component {
       fave_notes:''
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
-    this.updateFaveNote = this.updateFaveNote.bind(this);
+    this.updateFavorite = this.updateFavorite.bind(this);
     this.deleteFave = this.deleteFave.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 
@@ -59,28 +60,28 @@ componentDidMount(){
     return (
 
       <div
-        className={ this.props.info.id
+        className={ this.props.info.favoritesid
           ? 'destinationDivBox is-active' : 'destinationDivBox not-active' }
-        key={this.props.info.id}
-        id={this.props.info.id}
+        key={this.props.info.favoritesid}
+        id={this.props.info.favoritesid}
         onClick={this.updateTheLocation}>
         <br/>
       <h2>{this.props.info.location}</h2>
-      { this.props.info.id  && (
+      { this.props.info.favoritesid  && (
         <div>
         <h4>Notes</h4>
         <textarea name="fave_notes" value={this.props.info.fave_notes} onChange={this.handleChange} onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
-      { this.props.activeid &&
+      { this.props.info.favoritesid &&
         <button onClick={this.updateFavorite} className="add-fav" type="submit">
           Update Favorite
         </button>
         }
         <br/>
         <br/>
-        { this.props.info.id &&
+        { this.props.info.favoritesid &&
           <button onClick={this.deleteFave} className="add-fav" type="submit">
             Delete
           </button>
