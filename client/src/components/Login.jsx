@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-
+import {Redirect} from 'react-router-dom';
 class Login extends Component {
     constructor(props) {
       super(props);
       this.state = {
       email:'',
-      hashpassword:''
+      hashpassword:'',
+      authenticated: false
       }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,29 +26,29 @@ class Login extends Component {
     this.props.onSubmit(this.state);
     this.setState({
       email:'',
-      hashpassword: ''
+      hashpassword: '',
+      authenticated: !this.state.authenticated
     })
   }
 
-
   render(){
-     return(
-     <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Login</h1>
-          <label htmlFor="email"> Email: </label>
-          <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
+    return(
+      <div>
+        {this.state.authenticated && <Redirect to='/'/>};
+          <form onSubmit={this.handleSubmit}>
+            <h1>Login</h1>
+            <label htmlFor="email"> Email: </label>
+            <input type="text" value={this.state.email} name="email" onChange={this.handleChange}></input>
 
-          <br/> <label htmlFor="password"> Password: </label>
-          <input type="password" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
+            <br/> <label htmlFor="password"> Password: </label>
+            <input type="password" value={this.state.hashpassword} name="hashpassword" onChange={this.handleChange}></input>
 
-          <br/><button value="Login">LOGIN</button>
-        </form>
-     </div>
-  )}
+            <br/><button value="Login">LOGIN</button>
+         </form>
+      </div>
 
-
+    )
+  }
 }
-
 
 export default Login
