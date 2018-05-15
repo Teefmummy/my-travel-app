@@ -29,8 +29,12 @@ class Detail extends Component {
   handleSubmit(e) {
 debugger;
     e.preventDefault();
-    this.props.create_fave(this.state.fave_notes)
-      }
+    const faveObj = {
+      fave_notes: this.state.fave_notes,
+      location_id: this.props.info.id
+    }
+    this.props.create_fave(faveObj)
+  }
 
   render() {
 

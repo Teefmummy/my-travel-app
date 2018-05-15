@@ -51,7 +51,7 @@ export default class LocationsList extends Component {
 
 
   renderLocations() {
-
+    
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (

@@ -119,19 +119,22 @@ export default class MainView extends Component {
       const authToken = localStorage.getItem('authToken');
       const object = {
         method: 'POST',
+        'body': JSON.stringify(obj),
         headers: {
           'content-type' : 'application/json',
           'Authorization' : `Bearer ${authToken}`
         }
       }
-      fetch('/api/favorites', object)
+      fetch('/api/vacations/favorites', object)
         .then(resp => {
           if (!resp.ok) throw new Error(resp.message);
           return resp.json()
         })
+        .then()
     }
 
     createFave(faveObj) {
+      console.log('faveObj', faveObj)
       this.createFavorite(faveObj)
     }
 

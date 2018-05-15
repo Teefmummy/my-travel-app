@@ -7,8 +7,17 @@ function getAllFavorites(user_id) {
       WHERE user_id = $1
       `, user_id);
 }
-
+function createFavorite(fave) {
+  console.log('fave', fave)
+  // if (!fave.user_id) fave.user_id = null;
+  return db.one(`
+    INSERT INTO favorites (fave_notes, vacations_id, user_id)
+    VALUES ($/fave_notes/, $/location_id/, $/user_id/)
+    RETURNING *
+    `, fave);
+}
 
 module.exports = {
-    getAllFavorites
+    getAllFavorites,
+    createFavorite
   }
