@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 
 class Register extends Component {
   constructor(props) {
@@ -6,7 +7,8 @@ class Register extends Component {
     this.state = {
       name:'',
       email:'',
-      hashpassword:''
+      hashpassword:'',
+      authenticated: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,13 +28,15 @@ class Register extends Component {
     this.setState({
       name:'',
       email:'',
-      hashpassword: ''
+      hashpassword: '',
+      authenticated: !this.state.authenticated
     })
   }
 
   render(){
      return(
      <div>
+        {this.state.authenticated && <Redirect to='/'/>};
         <form onSubmit={this.handleSubmit}>
           <h1>Register</h1>
           <label htmlFor="name"> Name: </label>
