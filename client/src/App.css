@@ -12,12 +12,14 @@
 .HolyGrail-content {
   position: absolute;
   right: 0;
+  height: 90vh;
   width: 70vw;
 }
 
 .HolyGrail-sidebar {
   left: 0;
   width: 30vw;
+  height: 100vh;
   overflow: scroll;
   background: linear-gradient(to bottom right, lightblue, white);
 }
