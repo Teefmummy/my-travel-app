@@ -67,7 +67,9 @@ export default class Favorites extends Component{
     if(this.state.locationsLoaded) {
       return (this.state.locations.map((locale) => {
         return (
-          <FaveDetail info={locale}
+          <FaveDetail
+            key={locale.favoritesid}
+            info={locale}
             updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
             updateFavorite={this.props.updateFavorite}
