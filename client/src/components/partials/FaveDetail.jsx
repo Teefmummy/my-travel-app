@@ -24,9 +24,9 @@ class FaveDetail extends Component {
   updateFavorite(e) {   // send Post to route
     e.preventDefault();
     e.stopPropagation();
-    console.log('updating fave id: ', this.props.info.id)
+    console.log('updating fave id: ', this.props.info.favoritesid)
     const faveObj = {
-      fave_id: this.props.info.id,
+      fave_id: this.props.info.favoritesid,
       fave_notes: this.state.fave_notes
     }
     this.props.updateFavorite(faveObj)
@@ -40,16 +40,13 @@ class FaveDetail extends Component {
   }
 
   handleChange(e) {
+    console.log(e.target.value)
     // see https://reactjs.org/docs/forms.html#handling-multiple-inputs
-    const {name, value} = e.target;
-    console.log(name, value);
-    this.setState((prevState, props) => ({
-      fave_notes: {
-        ...prevState.fave_notes,
-        [name]: value
-        }
-      }))
-}
+    this.setState({
+      fave_notes: e.target.value
+    })
+  }
+
 componentDidMount(){
   this.setState({
     fave_notes: this.props.info.fave_notes
@@ -70,7 +67,11 @@ componentDidMount(){
       { this.props.info.favoritesid  && (
         <div>
         <h4>Notes</h4>
-        <textarea name="fave_notes" value={this.props.info.fave_notes} onChange={this.handleChange} onClick={(e) => e.stopPropagation()}/>
+        <textarea
+          name="fave_notes"
+          value={this.state.fave_notes}
+          onChange={this.handleChange}
+          onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>

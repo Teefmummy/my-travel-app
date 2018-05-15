@@ -20,10 +20,11 @@ function createFavorite(fave) {
 }
 
 function updateFavorite(fave) {
+  console.log('updatefavorite: ', fave)
   return db.one(`
     UPDATE favorites
     SET fave_notes = $/fave_notes/
-    WHERE favorites.user_id = /$user_id/ AND favorites.id = $/fave_id/
+    WHERE favorites.user_id = $/user_id/ AND favorites.id = $/fave_id/
     RETURNING *
     `, fave
   );
