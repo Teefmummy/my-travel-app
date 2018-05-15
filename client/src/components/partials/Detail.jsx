@@ -4,9 +4,10 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+       fave_notes: ""
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 
@@ -14,7 +15,20 @@ class Detail extends Component {
     console.log('updating location to: ', this.props.info.location)
     e.preventDefault();
     this.props.updateLocation(this.props.info)
-  }
+    }
+
+  handleChange(e) {
+        const {name, value} = e.target;
+        console.log(this.state)
+        this.setState({
+          [name]:e.target.value
+        });
+      }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.create_fave(this.state.fave_notes)
+      }
 
   render() {
 
@@ -30,13 +44,17 @@ class Detail extends Component {
       { this.props.info.id === this.props.activeid && (
         <div>
         <h4>Notes</h4>
-        <textarea onClick={(e) => e.stopPropagation()}/>
+        <textarea type="fave_notes"
+          name="fave_notes"
+          value={this.state.fave_notes}
+          onChange={this.handleChange}
+          onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
       { this.props.activeid &&
-        <button onClick={() => console.log('addfav clicked')} className="add-fav" type="submit">
-          Add Favorite
+        <button onClick={this.handleSubmit} className="add-fav" type="submit">
+            Add Favorite
         </button>
         }
         <br/><br/>

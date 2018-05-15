@@ -115,6 +115,25 @@ export default class MainView extends Component {
       })
     }
 
+    createFavorite(obj){
+      const authToken = localStorage.getItem('authToken');
+      const object = {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json',
+          'Authorization' : `Bearer ${authToken}`
+        }
+      }
+      fetch('/api/favorites', object)
+        .then(resp => {
+          if (!resp.ok) throw new Error(resp.message);
+          return resp.json()
+        })
+    }
+
+    createFave(faveObj) {
+      this.createFavorite(faveObj)
+    }
 
     // onButtonClick() { // ** TEST debug button
     //   this.setState({
@@ -152,6 +171,7 @@ export default class MainView extends Component {
                   <LocationsList
                       updateLocation={this.handleLocationChange}
                       activeid={this.state.activeid}
+                      create_fave={this.createFave}
                     />)}
               />
               <Route
