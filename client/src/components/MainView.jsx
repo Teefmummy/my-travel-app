@@ -143,6 +143,36 @@ export default class MainView extends Component {
       this.checkToken();
     }
 
+
+    updateFavorite(obj){
+      const authToken = localStorage.getItem('authToken');
+      const object = {
+        method: 'PUT',
+        'body': JSON.stringify(obj),
+        headers: {
+          'content-type' : 'application/json',
+          'Authorization' : `Bearer ${authToken}`
+        }
+      }
+      fetch('/api/vacations/favorites', object)
+        .then(resp => {
+          if (!resp.ok) throw new Error(resp.message);
+          return resp.json()
+        })
+        .then()
+    }
+
+    editFave(faveObj) {
+      console.log('faveObj', faveObj)
+      this.editFavorite(faveObj)
+    }
+
+
+    componentDidMount() {
+      this.checkToken();
+    }
+
+
   render() {
     return (
 
@@ -189,6 +219,7 @@ export default class MainView extends Component {
                   user={this.state.validUser}
                   // updateFaveNote={this.updateFaveNote}
                   // deleteFave={this.deleteFave}
+                  updateFavorite={this.updateFavorite}
                 />)}
               />
             </aside>

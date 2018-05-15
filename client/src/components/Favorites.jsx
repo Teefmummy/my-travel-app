@@ -31,6 +31,7 @@ export default class Favorites extends Component{
         return (
           <FaveDetail info={locale}
             activeid={this.props.activeid}
+            updateFavorite={this.props.updateFavorite}
           />
         )
         }))

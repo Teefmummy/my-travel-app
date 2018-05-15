@@ -5,7 +5,8 @@ class FaveDetail extends Component {
     super(props);
     this.state = {
       favorites: [],
-      favoritesLoaded: false
+      favoritesLoaded: false,
+      fave_notes:
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
     this.updateFaveNote = this.updateFaveNote.bind(this);
@@ -19,10 +20,14 @@ class FaveDetail extends Component {
     this.props.updateLocation(this.props.info)
   }
 
-  updateFaveNote(e) {   // send Post to route
+  updateFavorite(e) {   // send Post to route
     e.preventDefault();
     console.log('updating fave id: ', this.props.info.id)
-    // this.props.updateFaveNote(this.props.info)
+    const faveObj = {
+      fave_id: this.props.info.id,
+      fave_notes: this.state.fave_notes
+    }
+    this.props.updateFavorite(faveObj)
   }
 
   deleteFave(e) {     // send Delete to route
@@ -30,6 +35,21 @@ class FaveDetail extends Component {
     console.log('deleting fave id: ', this.props.info.id)
     // this.props.deleteFave(this.props.info)
   }
+
+  handleChange(e) {
+    // see https://reactjs.org/docs/forms.html#handling-multiple-inputs
+    const {name, value} = e.target;
+    console.log(name, value);
+    this.setState((prevState, props) => ({
+      fave_notes: {
+        ...prevState.fave_notes,
+        [name]: value
+      }
+componentDidMount(){
+  this.setState={
+    fave_notes: this.props.
+  }
+}
 
   render() {
 
@@ -46,12 +66,12 @@ class FaveDetail extends Component {
       { this.props.info.id === this.props.activeid && (
         <div>
         <h4>Notes</h4>
-        <textarea name="fave-note" onClick={(e) => e.stopPropagation()}/>
+        <textarea name="fave_notes" onChange={this.handleChange} onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
       { this.props.activeid &&
-        <button onClick={this.updateFaveNote} className="add-fav" type="submit">
+        <button onClick={this.updateFavorite} className="add-fav" type="submit">
           Update Favorite
         </button>
         }

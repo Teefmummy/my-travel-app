@@ -25,7 +25,12 @@ vacationRouting.route('/favorites')
     responseController.sendFavorites,
     responseController.sendErrorResponse
     )
-
+  .put(
+    authenticationController.restrict,
+    favoritesController.editFavorite,
+    responseController.sendOkResponse,
+    responseController.sendErrorResponse
+  )
 
 
 module.exports = vacationRouting;
