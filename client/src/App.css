@@ -1,55 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 .HolyGrail {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
 }
 
 .HolyGrail-body {
   display: flex;
-  flex: 1;
 }
 
 .HolyGrail-content {
   position: absolute;
   right: 0;
-  width: 70%;
-  height: 100%;
+  width: 70vw;
 }
 
 .HolyGrail-sidebar {
   left: 0;
-  width: 30%;
-  max-height: 500px;
+  width: 30vw;
   overflow: scroll;
   background: linear-gradient(to bottom right, lightblue, white);
 }
 
 .App {
+  height: 100vh;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 450px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App-Nav {
-  height: 50px;
+  height: 10vh;
   display:flex;
   flex-direction: row;
   background-color: black;
@@ -70,13 +50,9 @@
 .App-nav-obj a:hover {
   color: yellow;
 }
-.location-list {
-  height: 100%;
-  text-overflow: scroll;
-}
 
 .location-list .title {
-  background-color: red;
+  text-style: bold;
 }
 
 .main-container {
@@ -99,15 +75,10 @@
 .map-area {
   position: absolute;
   right: 0;
-  width: 50%;
-  height: 100%;
-}
-
-.listing-div {
-}
+/*  width: 50%;
+*/}
 
 .nearby-div {
-  /* background: rgba(0,0,0,0.2); */
   bottom: 0;
 }
 
@@ -160,6 +131,5 @@
 }
 
 .is-active {
-  /* background: white; */
   background: linear-gradient(to bottom left, white, #fcf8f2);
 }
