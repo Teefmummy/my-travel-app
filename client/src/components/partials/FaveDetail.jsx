@@ -32,30 +32,31 @@ class FaveDetail extends Component {
   }
 
   render() {
-
     return (
 
       <div
-        className={ this.props.info.id === this.props.activeid
+        className={ this.props.info.id
           ? 'destinationDivBox is-active' : 'destinationDivBox not-active' }
         key={this.props.info.id}
         id={this.props.info.id}
         onClick={this.updateTheLocation}>
         <br/>
       <h2>{this.props.info.location}</h2>
-      { this.props.info.id === this.props.activeid && (
+      { this.props.info.id  && (
         <div>
         <h4>Notes</h4>
         <textarea name="fave-note" onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
-      { this.props.activeid &&
+      { this.props.info.id &&
         <button onClick={this.updateFaveNote} className="add-fav" type="submit">
           Update Favorite
         </button>
         }
-        { this.props.activeid &&
+        <br/>
+        <br/>
+        { this.props.info.id &&
           <button onClick={this.deleteFave} className="add-fav" type="submit">
             Delete
           </button>

@@ -2,8 +2,10 @@ const db = require('../config/connection');
 
 function getAllFavorites(user_id) {
   console.log(user_id);
-    return db.manyOrNone(`
+    return db.any(`
       SELECT * FROM favorites
+      JOIN vacations
+      ON favorites.vacations_id = vacations.id
       WHERE user_id = $1
       `, user_id);
 }

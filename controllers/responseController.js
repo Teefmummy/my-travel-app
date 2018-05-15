@@ -4,7 +4,7 @@ function sendOkResponse(req, res) {
     data: res.locals.user || res.locals.vacation
   })
 }
-function sendFavorites(req, res) {
+function sendFavorites(req, res, next) {
   res.json({
     status: 'ok',
     data: res.locals.favorites

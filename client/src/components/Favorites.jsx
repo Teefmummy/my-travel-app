@@ -5,8 +5,8 @@ export default class Favorites extends Component{
   constructor(props) {
     super(props);
     this.state = {
-
-    }
+      locations: [],
+      locationsLoaded: false    }
   }
 
   fetchFavorites() {
@@ -18,11 +18,19 @@ export default class Favorites extends Component{
         'Authorization': `Bearer ${authToken}`
       }
     })
-    .then(resp => {
-      resp.json();
-      console.log(resp);
+    .then((resp) => {
+      if(!resp.ok) throw new Error(resp.statusMessage);
+      return resp.json();
+    })
+    .then((respBody) => {
+      this.setState({
+        locations: respBody.data,
+        locationsLoaded: true
+      })
     })
   }
+
+
 
   renderFavorites() {
 
@@ -30,6 +38,7 @@ export default class Favorites extends Component{
       return (this.state.locations.map((locale) => {
         return (
           <FaveDetail info={locale}
+            updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
           />
         )

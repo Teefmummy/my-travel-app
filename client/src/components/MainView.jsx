@@ -187,6 +187,7 @@ export default class MainView extends Component {
                 exact path='/favorites'
                 render={() => (<Favorites
                   user={this.state.validUser}
+                  updateLocation={this.handleLocationChange}
                   // updateFaveNote={this.updateFaveNote}
                   // deleteFave={this.deleteFave}
                 />)}

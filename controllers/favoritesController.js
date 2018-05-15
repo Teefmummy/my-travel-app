@@ -5,7 +5,7 @@ function getFavorites(req, res, next) {
   favoritesModel.getAllFavorites(res.locals.user.id)
     .then(data => {
       res.locals.favorites = data;
-      console.log(data);
+      console.log('favoritescontroller: ', data);
       next();
     })
     .catch(next)
