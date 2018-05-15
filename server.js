@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const userRoute = require('./routes/userRoute');
 const vacationRoute = require('./routes/vacationRoute');
@@ -19,6 +20,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(authenticationController.receiveToken);
+// app.use(methodOverride)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
@@ -28,6 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/user', userRoute);
 app.use('/api/vacations/', vacationRoute);
 app.use('/auth', authRoute);
+
 
 
 

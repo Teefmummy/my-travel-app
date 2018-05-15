@@ -24,7 +24,19 @@ function addNewFavorite(req, res, next) {
   .catch(next);
 }
 
+function deleteFavorite(req, res, next) {
+  req.body.user_id = res.locals.user.id;
+  console.log(req.body)
+  favoritesModel.deleteFavorite(req.body)
+  .then(data => {
+    console.log('deleted data: ', data)
+    next()
+  })
+  .catch(next);
+}
+
 module.exports = {
   getFavorites,
-  addNewFavorite
+  addNewFavorite,
+  deleteFavorite
 }

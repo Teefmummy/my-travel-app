@@ -25,6 +25,12 @@ vacationRouting.route('/favorites')
     responseController.sendFavorites,
     responseController.sendErrorResponse
     )
+  .delete(
+    authenticationController.restrict,
+    favoritesController.deleteFavorite,
+    responseController.sendFavorites,
+    responseController.sendErrorResponse
+    )
 
 
 

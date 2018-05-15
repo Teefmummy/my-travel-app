@@ -19,7 +19,15 @@ function createFavorite(fave) {
     `, fave);
 }
 
+function deleteFavorite(fave) {
+  console.log('fave', fave)
+  return db.one(`
+    DELETE FROM favorites WHERE id = $/id/ AND user_id = $/user_id/
+    `, fave)
+}
+
 module.exports = {
     getAllFavorites,
-    createFavorite
+    createFavorite,
+    deleteFavorite
   }
