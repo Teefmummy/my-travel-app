@@ -40,6 +40,7 @@ export default class Favorites extends Component{
           <FaveDetail info={locale}
             updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
+            DELETE={this.props.deleteFave}
           />
         )
         }))
