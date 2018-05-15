@@ -6,7 +6,9 @@ export default class Favorites extends Component{
     super(props);
     this.state = {
       locations: [],
-      locationsLoaded: false    }
+      locationsLoaded: false
+     }
+      this.deleteFave = this.deleteFave.bind(this);
   }
 
   fetchFavorites() {
@@ -32,6 +34,33 @@ export default class Favorites extends Component{
   }
 
 
+  deleteFave(obj) {
+    console.log('deleting getting here')
+    const authToken = localStorage.getItem('authToken');
+    const object = {
+      method: 'DELETE',
+      'body': JSON.stringify(obj),
+      headers: {
+        'content-type' : 'application/json',
+        'Authorization' : `Bearer ${authToken}`
+      }
+    }
+    fetch('/api/vacations/favorites', object)
+      .then(resp => {
+        if (!resp.ok) throw new Error(resp.message);
+        return resp.json()
+      })
+      .then(respBody => {
+        this.setState((prevState, props) => {
+          return {
+            locations: prevState.locations.filter(location => location.favoritesid !== obj.favoritesid)
+          }
+        })
+      })
+  }
+
+
+
 
   renderFavorites() {
 
@@ -42,7 +71,7 @@ export default class Favorites extends Component{
             updateLocation={this.props.updateLocation}
             activeid={this.props.activeid}
             updateFavorite={this.props.updateFavorite}
-            DELETE={this.props.deleteFave}
+            DELETE={this.deleteFave}
           />
         )
         }))
