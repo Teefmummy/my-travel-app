@@ -19,7 +19,7 @@
 .HolyGrail-sidebar {
   left: 0;
   width: 30vw;
-  height: 100vh;
+  height: 90vh;
   overflow: scroll;
   background: linear-gradient(to bottom right, lightblue, white);
 }
