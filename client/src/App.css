@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+.App {
+  height: 100vh;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .HolyGrail {
   display: flex;
   flex-direction: column;
@@ -22,12 +28,6 @@
   height: 90vh;
   overflow: scroll;
   background: linear-gradient(to bottom right, lightblue, white);
-}
-
-.App {
-  height: 100vh;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .App-Nav {
@@ -54,7 +54,7 @@
 }
 
 .location-list .title {
-  text-style: bold;
+  font-weight: bold;
 }
 
 .main-container {
@@ -63,16 +63,14 @@
 }
 .sidebar {
   background-color: red;
-    height: 100%; /* 100% Full-height */
-    width: 30%; /* 0 width - change this with JavaScript */
-    position: absolute; /* Stay in place */
-    /* z-index: 1; /* Stay on top */ */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    top: 0;
     left: 0;
-    /*background-color: #111;*/ /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
 }
 .map-area {
   position: absolute;
@@ -146,7 +144,7 @@
 }
 
 .is-active > h2 {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .is-active:hover {
@@ -156,6 +154,7 @@
 aside > div > h1 {
   font-size: 35px;
   font-weight: bold;
+  font-family: Times New Roman;
 }
 
 textarea {

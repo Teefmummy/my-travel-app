@@ -6,7 +6,7 @@ class FaveDetail extends Component {
     this.state = {
       favorites: [],
       favoritesLoaded: false,
-      fave_notes:''
+      fave_notes: ''
     }
     this.updateTheLocation = this.updateTheLocation.bind(this);
     this.updateFavorite = this.updateFavorite.bind(this);
@@ -21,7 +21,7 @@ class FaveDetail extends Component {
     this.props.updateLocation(this.props.info)
   }
 
-  updateFavorite(e) {   // send Post to route
+  updateFavorite(e) { 
     e.preventDefault();
     e.stopPropagation();
     console.log('updating fave id: ', this.props.info.favoritesid)
@@ -32,7 +32,7 @@ class FaveDetail extends Component {
     this.props.updateFavorite(faveObj)
   }
 
-  deleteFave(e) {     // send Delete to route
+  deleteFave(e) {
     e.preventDefault();
     e.stopPropagation();
     console.log('deleting fave id: ', this.props.info.favoritesid)
@@ -41,7 +41,6 @@ class FaveDetail extends Component {
 
   handleChange(e) {
     console.log(e.target.value)
-    // see https://reactjs.org/docs/forms.html#handling-multiple-inputs
     this.setState({
       fave_notes: e.target.value
     })

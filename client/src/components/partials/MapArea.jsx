@@ -22,21 +22,19 @@ const Listing = ({ places }) => (
   )
 
 
-
 class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedPlace: {},
-      // places: [],
       showingPlaces: false,
+      showingInfoWindow: true
+      // places: [],
       // activeMarker: {},
       // selectedPlace: {},
-      showingInfoWindow: true
     }
 
     this.toggleShowPlaces = this.toggleShowPlaces.bind(this);
-    // this.handleAddPlace = this.handleAddPlace.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
     // this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
@@ -68,14 +66,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
      this.setState(prevState => ({
        showingPlaces: !prevState.showingPlaces
      }));
-     // console.log('showingPlaces: ', this.state.showingPlaces);
    }
-
- // handleAddPlace(e) {
- //   console.log('adding place ', e.target)
- //    this.props.onPlaceToggle(e.target.value)
- // }
-
 
 
  // getPlaceInfo(id) {
@@ -110,7 +101,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
       componentDidMount() {
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
 
-
       }
 
   render() {
@@ -126,10 +116,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
             style={style}
             onReady={this.fetchPlaces}
             onClick={this.fetchPlaces}
-            // initialCenter={{
-            //     lat: this.state.initlatitude,
-            //     lng: this.state.initlongitude
-            //   }}
             center={{
               lat: this.props.latitude,
               lng: this.props.longitude

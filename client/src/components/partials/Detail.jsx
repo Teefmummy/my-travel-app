@@ -47,9 +47,6 @@ class Detail extends Component {
         <br/>
       <h2>{this.props.info.location}</h2>
 
-      {/* <img src={`/src/assets/images/${this.props.info.img_url}`} ></img> */}
-
-
       { this.props.info.id === this.props.activeid && (
         <div>
           <h4>Notes</h4>
