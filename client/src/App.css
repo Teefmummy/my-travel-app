@@ -125,6 +125,10 @@
   outline: none;
 }
 
+.showplaces-button:hover {
+  background: linear-gradient(to bottom right, white, lightblue);
+}
+
 .destinationDivBox {
   border-top: .25px solid black;
   border-bottom: .25px solid black;
@@ -132,6 +136,38 @@
   padding: auto;
 }
 
+
+.not-active:hover{
+  background: linear-gradient(#fcf8f2, lightblue);
+}
+
 .is-active {
-  background: linear-gradient(to bottom left, white, #fcf8f2);
+  background: linear-gradient(to bottom left, white, #fbfcc2);
+}
+
+.is-active > h2 {
+  font-size: 35px;
+}
+
+.is-active:hover {
+  background: linear-gradient(#fbfcc2, white);
+}
+
+aside > div > h1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+textarea {
+  padding: 20px;
+}
+
+.add-fav {
+  font-size: 20px;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.add-fav:hover {
+  background: lightblue;
 }

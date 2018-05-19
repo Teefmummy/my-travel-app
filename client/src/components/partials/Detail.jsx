@@ -46,18 +46,22 @@ class Detail extends Component {
         onClick={this.updateTheLocation}>
         <br/>
       <h2>{this.props.info.location}</h2>
+
+      {/* <img src={`/src/assets/images/${this.props.info.img_url}`} ></img> */}
+
+
       { this.props.info.id === this.props.activeid && (
         <div>
-        <h4>Notes</h4>
-        <textarea type="fave_notes"
-          name="fave_notes"
-          value={this.state.fave_notes}
-          onChange={this.handleChange}
-          onClick={(e) => e.stopPropagation()}/>
+          <h4>Notes</h4>
+          <textarea type="fave_notes"
+            name="fave_notes"
+            value={this.state.fave_notes}
+            onChange={this.handleChange}
+            onClick={(e) => e.stopPropagation()}/>
         </div>
       ) }
         <br/>
-      { this.props.activeid &&
+      { this.props.info.id === this.props.activeid &&
         <button onClick={this.handleSubmit} className="add-fav" type="submit">
             Add Favorite
         </button>

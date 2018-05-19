@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const LoadingContainer = (props) => (
-  <div>Loading Map!</div>
+  <div> <h3> * Loading Map * </h3> </div>
 )
 
 //the rendered listing of nearby places
@@ -51,8 +51,8 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    // Specify location, radius and place types for your Places API search.
    const request = {
      location: center,
-     radius: '1',
-     type: ['food']
+     radius: '35'
+     // type: ['food']
    };
 
    service.nearbySearch(request, (results, status) => {
@@ -111,7 +111,6 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
         // this.getPlaceInfo('ChIJAQAAAAAA3YgRJbQeU5awSMU')
 
 
-
       }
 
   render() {
@@ -126,6 +125,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
             google={this.props.google}
             style={style}
             onReady={this.fetchPlaces}
+            onClick={this.fetchPlaces}
             // initialCenter={{
             //     lat: this.state.initlatitude,
             //     lng: this.state.initlongitude
@@ -151,7 +151,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
           {/*  ** RENDERED NEARBY PLACES LIST **  */}
         <div className="showplaces-toggle-window">
           <button className={`showplaces-button ${this.state.showingPlaces === true ? 'places-show' : 'places-hide'}`} onClick={this.toggleShowPlaces}>
-              Nearby Places {this.state.showingPlaces === true ? '(x)' : ' List'} </button>
+               {this.state.showingPlaces ? 'Nearby Places (x)' : 'Show Nearby Places'} </button>
         </div>
         {this.state.showingPlaces === true ? (
             <Listing places={this.state.places}/>
