@@ -10,7 +10,7 @@
     "start": "node server.js",
     "dev": "concurrently \"npm run start-server\" \"npm run start-client\"",
     "start-server": "nodemon server.js",
-    "start-client": "cd client && npm start",
+    "start-client": "cd client && yarn start",
     "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
