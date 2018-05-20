@@ -7,7 +7,10 @@ const userRoute = require('./routes/userRoute');
 const vacationRoute = require('./routes/vacationRoute');
 const authRoute = require('./routes/authenticateRoute');
 const authenticationController = require('./controllers/authenticationController');
-require('dotenv').config();
+// require('dotenv').config();
+
+// import path
+const path = require('path');
 
 
 const app = express();
@@ -15,6 +18,9 @@ const app = express();
 
 
 const PORT = process.env.PORT || 3001;
+
+// This can be placed under your imports
+app.use(express.static(__dirname + '/public/build'));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
