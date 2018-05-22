@@ -49,7 +49,7 @@ fetchPlaces = (mapProps, map) => this.searchNearby(map, map.center);
    // Specify location, radius and place types for your Places API search.
    const request = {
      location: center,
-     radius: '35'
+     radius: '100'
      // type: ['food']
    };
 
