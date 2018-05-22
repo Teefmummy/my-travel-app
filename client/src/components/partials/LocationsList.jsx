@@ -75,9 +75,11 @@ export default class LocationsList extends Component {
     // console.log(this.state.currentSelection)
     // console.log(this.state)
     return (
-      <div class="location-list">
-        <h1 class="title">Vacation Locations</h1>
+      <div className="location-list">
+        <h1 className="title">Vacation Locations <hr/> </h1>
+          <div className="locations">
           { this.renderLocations() }
+        </div>
       </div>
     )
   }

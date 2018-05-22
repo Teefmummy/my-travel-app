@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Vidaloka');
+
 
 .App {
   height: 100vh;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .HolyGrail {
@@ -28,7 +30,8 @@
   width: 30vw;
   height: 90vh;
   overflow: scroll;
-  background: linear-gradient(to bottom right, lightblue, white);
+  /* background: linear-gradient(to bottom right, lightblue, white); */
+  background: linear-gradient(#f2f4f7, white);
 }
 
 .App-Nav {
@@ -42,7 +45,7 @@
   text-align: center;
   padding: 0;
   margin: auto;
-  font-size: 25px;
+  font-size: 28px;
   color: white;
   width: 25%;
 }
@@ -51,11 +54,15 @@
   color: white;
 }
 .App-nav-obj a:hover {
-  color: yellow;
+  color: blue;
 }
 
 .location-list .title {
   font-weight: bold;
+}
+
+.locations {
+  margin-top: -7.5%;
 }
 
 .main-container {
@@ -87,7 +94,7 @@
   background: rgba(255,255,255,0.7);
   border-radius: 20px;
   z-index: 1;
-  font-size: 15px;
+  font-size: 25px;
   list-style-type: none;
   position: absolute;
   right: 1%;
@@ -129,33 +136,45 @@
 }
 
 .destinationDivBox {
-  border-top: .25px solid black;
-  border-bottom: .25px solid black;
+  /* border-top: .25px solid black;
+  border-bottom: .25px solid black; */
   margin: 1px;
   padding: auto;
+  /* border-left: .1px solid black;
+  border-right: .1px solid black; */
+  border: .5px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
 }
 
 
 .not-active:hover{
-  background: linear-gradient(#fcf8f2, lightblue);
+  /* background: linear-gradient(white, #f2f4f7); */
+  background: linear-gradient(white, #eaf2ff);
+  cursor: pointer;
 }
 
 .is-active {
-  background: linear-gradient(to bottom left, white, #fbfcc2);
+  background: linear-gradient(to bottom right, white, lightblue);
+  cursor: pointer;
 }
 
 .is-active > h2 {
+  font-size: 35px;
+}
+
+.not-active h2 {
   font-size: 30px;
 }
 
 .is-active:hover {
-  background: linear-gradient(#fbfcc2, white);
+  background: linear-gradient(lightblue, white);
 }
 
+/* (locations-list-title) */
 aside > div > h1 {
-  font-size: 35px;
+  font-size: 40px;
   font-weight: bold;
-  font-family: Times New Roman;
+  font-family: 'Vidaloka', serif;
 }
 
 textarea {
